@@ -13,7 +13,7 @@
     "apiai": "^4.0.2",
     "body-parser": "^1.17.1",
     "ejs": "2.5.6",
-    "express": "4.15.2",
+    "express": "^4.15.2",
     "uuid": "^3.0.1"
   },
   "repository": {
@@ -28,5 +28,5 @@
     "rupani",
     "askrupani"
   ],
-  "license": "MIT"
+  "license": "ISC"
 }
