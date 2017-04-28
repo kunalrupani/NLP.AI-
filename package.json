@@ -1,7 +1,7 @@
 {
-  "name": "Pointy Labs Experiements",
+  "name": "PointyLabsExperiements",
   "version": "0.2.6",
-  "description": "Experiements by Pointy Labs",
+  "description": "ExperiementsByPointy Labs",
   "engines": {
     "node": "6.10.2"
   },
