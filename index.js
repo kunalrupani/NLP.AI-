@@ -194,6 +194,8 @@ function sendTextMessage(recipientId, text) {
 		}
 	}
 	callSendAPI(messageData);
+	console.log("************End Request**************");
+
 }
 
 
@@ -255,7 +257,6 @@ function callSendAPI(messageData) {
 				console.log("Successfully called Send API for recipient %s",
 					recipientId);
 			}
-			console.log("************End Request**************");
 
 		} else {
 			console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
