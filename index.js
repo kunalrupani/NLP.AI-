@@ -86,6 +86,7 @@ app.get('/askRupaniBot/webhook/', function (req, res) {
 // Facebook Callbacks - all of them are POST requests
 app.post('/askRupaniBot/webhook/', function (req, res) {
 	var data = req.body;
+	console.log("************New Request**************");
 	console.log(JSON.stringify(data));
 
 	// Make sure this is a page subscription
@@ -166,6 +167,9 @@ function sendToApiAi(sender, text) {
 }
 
 function handleApiAiResponse(sender, response) {
+	console.log("************Received Response from API AI**************");
+	console.log(JSON.stringify(response));
+
 	let responseText = response.result.fulfillment.speech;
 
 	sendTypingOff(sender);
@@ -246,10 +250,13 @@ function callSendAPI(messageData) {
 			if (messageId) {
 				console.log("Successfully sent message with id %s to recipient %s",
 					messageId, recipientId);
+
 			} else {
 				console.log("Successfully called Send API for recipient %s",
 					recipientId);
 			}
+			console.log("************End Request**************");
+
 		} else {
 			console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
 		}
