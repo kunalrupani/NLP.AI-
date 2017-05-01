@@ -2,6 +2,7 @@ const apiai = require('apiai');
 const config = require('./../config');
 const uuid = require('uuid');
 
+const sessionIds = new Map();
 
 //Functions
 function receivedMessage(event) {
