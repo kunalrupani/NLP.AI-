@@ -1,5 +1,5 @@
 const apiai = require('apiai');
-const config = require('./config');
+const config = require('./../config');
 const uuid = require('uuid');
 
 
