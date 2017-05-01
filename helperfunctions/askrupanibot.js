@@ -1,3 +1,8 @@
+const apiai = require('apiai');
+const config = require('./config');
+const uuid = require('uuid');
+
+
 //Functions
 function receivedMessage(event) {
 
