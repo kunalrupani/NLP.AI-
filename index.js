@@ -63,15 +63,6 @@ function verifyRequestSignature(req, res, buf) {
 	}
 }
 
-
-// API AI Setup
-const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
-	language: "en",
-	requestSource: "fb"
-});
-
-
-
 // For Facebook verification
 app.get('/askRupaniBot/webhook/', function (req, res) {
 	console.log("request");

@@ -7,6 +7,13 @@ const config = require('./../config');
 
 const sessionIds = new Map();
 
+// API AI Setup
+const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
+	language: "en",
+	requestSource: "fb"
+});
+
+
 //Functions
 function receivedMessage(event) {
 
