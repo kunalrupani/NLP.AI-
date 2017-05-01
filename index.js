@@ -70,7 +70,7 @@ const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 	requestSource: "fb"
 });
 
-const sessionIds = new Map();
+
 
 // For Facebook verification
 app.get('/askRupaniBot/webhook/', function (req, res) {
