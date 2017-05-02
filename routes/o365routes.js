@@ -22,7 +22,7 @@ router.get('/disconnect', function (req, res) {
   res.clearCookie('nodecookie');
   clearCookies(res);
   res.status(200);
-  res.redirect('https://pointylabs.herokuapp.com/o365/');
+  res.redirect('https://pointylabs.herokuapp.com/o365/login');
 });
 
 /* GET home page. */
