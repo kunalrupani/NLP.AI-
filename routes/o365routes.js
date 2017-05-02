@@ -27,9 +27,9 @@ router.get('/disconnect', function (req, res) {
 
 /* GET home page. */
 router.get('/login', function (req, res) {
+  console.log("#### I am here #2 #####"); 
   if (req.query.code !== undefined) {
-    console.log(res.ACCESS_TOKEN_CACHE_KEY);
-    console.log('req.query.code== ',req.query.code);
+
     authHelper.getTokenFromCode(req.query.code, function (e, accessToken, refreshToken) {
       if (e === null) {
         
@@ -44,6 +44,7 @@ router.get('/login', function (req, res) {
       }
     });
   } else {
+    console.log("#### I am here #3 #####"); 
     res.render('o365login', { auth_url: authHelper.getAuthUrl() });
   }
 });
