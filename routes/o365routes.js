@@ -6,9 +6,9 @@ var requestUtil = require('../helperfunctions/requestUtil.js');
 var emailer = require('../helperfunctions/emailer.js');
 
 /* GET home page. */
-router.get('/o365', function (req, res) {
+router.get('/', function (req, res) {
   // check for token
-  console.log("#### I am here #####");
+  console.log("#### I am here #1 #####");
   if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
     res.redirect('login');
   } else {
@@ -16,7 +16,7 @@ router.get('/o365', function (req, res) {
   }
 });
 
-router.get('/o365/disconnect', function (req, res) {
+router.get('/disconnect', function (req, res) {
   // check for token
   req.session.destroy();
   res.clearCookie('nodecookie');
@@ -26,7 +26,7 @@ router.get('/o365/disconnect', function (req, res) {
 });
 
 /* GET home page. */
-router.get('/o365/login', function (req, res) {
+router.get('/login', function (req, res) {
   if (req.query.code !== undefined) {
     console.log(res.ACCESS_TOKEN_CACHE_KEY);
     console.log('req.query.code== ',req.query.code);
@@ -36,7 +36,7 @@ router.get('/o365/login', function (req, res) {
         // cache the refresh token in a cookie and go back to index
         res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
         res.cookie(authHelper.REFRESH_TOKEN_CACHE_KEY, refreshToken);
-        res.redirect('/o365/');
+        res.redirect('/');
       } else {
         console.log(JSON.parse(e.data).error_description);
         res.status(500);
@@ -97,7 +97,7 @@ function renderSendMail(req, res) {
   );
 }
 
-router.post('/0365/', function (req, res) {
+router.post('/', function (req, res) {
   var destinationEmailAddress = req.body.default_email;
   var mailBody = emailer.generateMailBody(
     req.session.user.displayName,
