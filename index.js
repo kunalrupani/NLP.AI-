@@ -51,8 +51,7 @@ app.use(session({
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-//Express Router for o365 routes
-app.use('/o365/', o365routes);
+
 
 
 // ------------ Express Paths--------------------//
@@ -133,6 +132,17 @@ app.post('/askRupaniBot/webhook/', function (req, res) {
 });
 
 // -------------- End FB AskRupaniBot -------------//
+
+
+//--------------- Start O365 Section ---------------//
+
+
+//Express Router for o365 routes
+app.use('/o365/', o365routes);
+
+
+//--------------- END O365 Section ---------------//
+
 
 // Express listen
 
