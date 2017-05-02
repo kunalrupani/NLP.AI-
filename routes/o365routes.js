@@ -29,7 +29,8 @@ router.get('/disconnect', function (req, res) {
 router.get('/login', function (req, res) {
   console.log("#### I am here #2 #####"); 
   if (req.query.code !== undefined) {
-
+    console.log("#### I am here #2.1 #####"); 
+    console.log(req.query.code);
     authHelper.getTokenFromCode(req.query.code, function (e, accessToken, refreshToken) {
       if (e === null) {
         
