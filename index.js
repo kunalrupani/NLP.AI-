@@ -48,7 +48,7 @@ app.use(session({
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+app.set('view engine', 'hbs');
 
 
 
