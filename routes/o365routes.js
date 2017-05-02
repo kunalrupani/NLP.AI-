@@ -8,6 +8,7 @@ var emailer = require('../helperfunctions/emailer.js');
 /* GET home page. */
 router.get('/o365', function (req, res) {
   // check for token
+  console.log("#### I am here #####");
   if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
     res.redirect('login');
   } else {
