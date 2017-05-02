@@ -12,7 +12,6 @@ router.get('/', function (req, res) {
   if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
     res.redirect('login');
   } else {
-    //res.redirect('www.facebook.com');
     renderSendMail(req, res);
   }
 });
