@@ -34,8 +34,29 @@ function getAuthUrl() {
  * @param {AcquireTokenCallback} callback The callback function.
  */
 function getTokenFromCode(code, callback) {
-}
+  var OAuth2 = OAuth.OAuth2;
+  var oauth2 = new OAuth2(
+    credentials.client_id,
+    credentials.client_secret,
+    credentials.authority,
+    credentials.authorize_endpoint,
+    credentials.token_endpoint
+  );
 
+  oauth2.getOAuthAccessToken(
+    code,
+    {
+      grant_type: 'authorization_code',
+      redirect_uri: credentials.redirect_uri,
+      response_mode: 'form_post',
+      nonce: uuid.v4(),
+      state: 'abcd'
+    },
+    function (e, accessToken, refreshToken) {
+      callback(e, accessToken, refreshToken);
+    }
+  );
+}
 
 /**
  * Gets a new access token via a previously issued refresh token.
