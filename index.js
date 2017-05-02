@@ -11,6 +11,16 @@ const config = require('./config');
 const uuid = require('uuid');
 const {receivedMessage} = require('./helperfunctions/askrupanibot');
 
+//o365 imports
+var session = require('express-session');
+var path = require('path');
+var favicon = require('serve-favicon');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var o365routes = require('./routes/o365routes');
+
+
+
 // Express Middleware
 
 app.set('port', (process.env.PORT || 5000));
@@ -24,9 +34,25 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json())
 
+//Middleware for cookie management
+app.use(cookieParser());
+
+// session middleware configuration
+// see https://github.com/expressjs/session
+app.use(session({
+  secret: '12345QWERTY-SECRET',
+  name: 'nodecookie',
+  resave: false,
+  saveUninitialized: false
+}));
+
+
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+
+//Express Router for o365 routes
+app.use('/o365/', o365routes);
 
 
 // ------------ Express Paths--------------------//
@@ -106,7 +132,7 @@ app.post('/askRupaniBot/webhook/', function (req, res) {
 	}
 });
 
-
+// -------------- End FB AskRupaniBot -------------//
 
 // Express listen
 

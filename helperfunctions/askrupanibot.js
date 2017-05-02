@@ -13,7 +13,6 @@ const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 	requestSource: "fb"
 });
 
-
 //Functions
 function receivedMessage(event) {
 
@@ -82,7 +81,6 @@ function handleApiAiResponse(sender, response) {
 	}
 }
 
-
 function sendTextMessage(recipientId, text) {
 	var messageData = {
 		recipient: {
@@ -94,10 +92,7 @@ function sendTextMessage(recipientId, text) {
 	}
 	callSendAPI(messageData);
 	console.log("************End Request**************");
-
 }
-
-
 
 //https://developers.facebook.com/docs/messenger-platform/webhook-reference/message-echo
 //This callback will occur when a message has been sent by your page
@@ -162,7 +157,6 @@ function callSendAPI(messageData) {
 		}
 	});
 }
-
 
 //Send indicator to FB Messager about the users typing action
 function sendTypingOn(recipientId) {
