@@ -7,8 +7,8 @@ var credentials = {
   authority: 'https://login.microsoftonline.com/common',
   authorize_endpoint: '/oauth2/v2.0/authorize',
   token_endpoint: '/oauth2/v2.0/token',
-  client_id: 'ENTER_YOUR_CLIENT_ID',
-  client_secret: 'ENTER_YOUR_SECRET',
+  client_id: '070de138-9b7e-4bbf-b23c-563d5acd64ca',
+  client_secret: 'ahPFp8jq0dBSSv9qPiEyiMs',
   redirect_uri: 'https://pointylabs.herokuapp.com/o365/login',
   scope: 'User.Read Mail.Send offline_access'
 };
