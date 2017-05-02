@@ -9,7 +9,7 @@ var credentials = {
   token_endpoint: '/oauth2/v2.0/token',
   client_id: 'ENTER_YOUR_CLIENT_ID',
   client_secret: 'ENTER_YOUR_SECRET',
-  redirect_uri: 'http://localhost:3000/o365/login',
+  redirect_uri: 'https://pointylabs.herokuapp.com/o365/login',
   scope: 'User.Read Mail.Send offline_access'
 };
 

@@ -46,7 +46,6 @@ router.get('/login', function (req, res) {
   } else {
     console.log("#### I am here #3 #####"); 
     res.render('pages/o365login', { auth_url: authHelper.getAuthUrl() });
-    //res.render('pages/o365login1');
   }
 });
 
