@@ -137,7 +137,7 @@ app.post('/askRupaniBot/webhook/', function (req, res) {
 
 
 //Express Router for o365 routes
-app.use('/o365/', o365routes);
+app.use('/o365', o365routes);
 
 
 //--------------- END O365 Section ---------------//

@@ -6,7 +6,7 @@ var requestUtil = require('../helperfunctions/requestUtil.js');
 var emailer = require('../helperfunctions/emailer.js');
 
 /* GET home page. */
-router.get('/o365/', function (req, res) {
+router.get('/o365', function (req, res) {
   // check for token
   if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
     res.redirect('login');
