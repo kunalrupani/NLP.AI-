@@ -1,7 +1,8 @@
 <script type="text/javascript">
 function login() {
 	//window.location = '{{auth_url}}'.replace(/&amp;/g, '&');
-    window.location = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=070de138-9b7e-4bbf-b23c-563d5acd64ca&response_type=code&redirect_uri=http://localhost:3000/login&scope=User.Read%20Mail.Send%20offline_access&response_mode=query&nonce=3884c1ce-2457-4037-b686-1667ab078203&state=abcd';
+    window.location = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=070de138-9b7e-4bbf-b23c-563d5acd64ca&response_type=code&redirect_uri=https://pointylabs.herokuapp.com/o365/login&scope=User.Read%20Mail.Send%20offline_access&response_mode=query&nonce=3884c1ce-2457-4037-b686-1667ab078203&state=abcd';
+    
 }
 </script>
 <div class="ms-Grid">
