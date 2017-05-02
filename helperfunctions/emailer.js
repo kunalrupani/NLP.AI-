@@ -18,6 +18,24 @@ function getEmailContent(name) {
  * @return the message object to send over the wire
  */
 function wrapEmail(content, recipient) {
+  var emailAsPayload = {
+    Message: {
+      Subject: 'Welcome to Office 365 development with Node.js and the Office 365 Connect sample',
+      Body: {
+        ContentType: 'HTML',
+        Content: content
+      },
+      ToRecipients: [
+        {
+          EmailAddress: {
+            Address: recipient
+          }
+        }
+      ]
+    },
+    SaveToSentItems: true
+  };
+  return emailAsPayload;
 }
 
 /**
