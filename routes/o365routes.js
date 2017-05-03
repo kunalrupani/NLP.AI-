@@ -19,8 +19,8 @@ router.get('/', function (req, res) {
 router.get('/disconnect', function (req, res) {
   // check for token
   //req.session.destroy();
-  //res.clearCookie('nodecookie');
- // clearCookies(res);
+  res.clearCookie('nodecookie');
+  clearCookies(res);
   res.status(200);
   res.redirect('https://pointylabs.herokuapp.com/o365/login');
 });

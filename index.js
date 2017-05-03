@@ -36,14 +36,14 @@ app.use(bodyParser.json())
 //Middleware for cookie management
 app.use(cookieParser());
 
-// // session middleware configuration
-// // see https://github.com/expressjs/session
-// app.use(session({
-//   secret: '12345QWERTY-SECRET',
-//   name: 'nodecookie',
-//   resave: false,
-//   saveUninitialized: false
-// }));
+// session middleware configuration
+// see https://github.com/expressjs/session
+app.use(session({
+  secret: '12345QWERTY-SECRET',
+  name: 'nodecookie',
+  resave: false,
+  saveUninitialized: false
+}));
 
 
 // views is directory for all template files
