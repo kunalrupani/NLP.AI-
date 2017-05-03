@@ -51,53 +51,53 @@ router.get('/login', function (req, res) {
 });
 
 function renderSendMail(req, res) {
-    res.send('Hello Sendmail');
-//   requestUtil.getUserData(
-//     req.cookies.ACCESS_TOKEN_CACHE_KEY,
-//     function (firstRequestError, firstTryUser) {
-//       if (firstTryUser !== null) {
-//         req.session.user = firstTryUser;
-//         res.render(
-//           'sendMail',
-//           {
-//             display_name: firstTryUser.displayName,
-//             user_principal_name: firstTryUser.userPrincipalName
-//           }
-//         );
-//       } else if (hasAccessTokenExpired(firstRequestError)) {
-//         // Handle the refresh flow
-//         authHelper.getTokenFromRefreshToken(
-//           req.cookies.REFRESH_TOKEN_CACHE_KEY,
-//           function (refreshError, accessToken) {
-//             res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
-//             if (accessToken !== null) {
-//               requestUtil.getUserData(
-//                 req.cookies.ACCESS_TOKEN_CACHE_KEY,
-//                 function (secondRequestError, secondTryUser) {
-//                   if (secondTryUser !== null) {
-//                     req.session.user = secondTryUser;
-//                     res.render(
-//                       'sendMail',
-//                       {
-//                         display_name: secondTryUser.displayName,
-//                         user_principal_name: secondTryUser.userPrincipalName
-//                       }
-//                     );
-//                   } else {
-//                     clearCookies(res);
-//                     renderError(res, secondRequestError);
-//                   }
-//                 }
-//               );
-//             } else {
-//               renderError(res, refreshError);
-//             }
-//           });
-//       } else {
-//         renderError(res, firstRequestError);
-//       }
-//     }
-//   );
+    //res.send('Hello Sendmail');
+  requestUtil.getUserData(
+    req.cookies.ACCESS_TOKEN_CACHE_KEY,
+    function (firstRequestError, firstTryUser) {
+      if (firstTryUser !== null) {
+        req.session.user = firstTryUser;
+        res.render(
+          'pages/sendMail',
+          {
+            display_name: firstTryUser.displayName,
+            user_principal_name: firstTryUser.userPrincipalName
+          }
+        );
+      } else if (hasAccessTokenExpired(firstRequestError)) {
+        // Handle the refresh flow
+        authHelper.getTokenFromRefreshToken(
+          req.cookies.REFRESH_TOKEN_CACHE_KEY,
+          function (refreshError, accessToken) {
+            res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
+            if (accessToken !== null) {
+              requestUtil.getUserData(
+                req.cookies.ACCESS_TOKEN_CACHE_KEY,
+                function (secondRequestError, secondTryUser) {
+                  if (secondTryUser !== null) {
+                    req.session.user = secondTryUser;
+                    res.render(
+                      'pages/sendMail',
+                      {
+                        display_name: secondTryUser.displayName,
+                        user_principal_name: secondTryUser.userPrincipalName
+                      }
+                    );
+                  } else {
+                    clearCookies(res);
+                    renderError(res, secondRequestError);
+                  }
+                }
+              );
+            } else {
+              renderError(res, refreshError);
+            }
+          });
+      } else {
+        renderError(res, firstRequestError);
+      }
+    }
+  );
 }
 
 router.post('/', function (req, res) {
