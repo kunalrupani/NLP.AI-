@@ -12,7 +12,7 @@ const uuid = require('uuid');
 const {receivedMessage} = require('./helperfunctions/askrupanibot');
 
 //o365 imports
-// var session = require('express-session');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
