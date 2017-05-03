@@ -51,12 +51,13 @@ router.get('/login', function (req, res) {
 });
 
 function renderSendMail(req, res) {
-    //res.send('Hello Sendmail');
-  requestUtil.getUserData(
+    console.log("#### I am here #4 #####"); 
+    requestUtil.getUserData(
     req.cookies.ACCESS_TOKEN_CACHE_KEY,
     function (firstRequestError, firstTryUser) {
       if (firstTryUser !== null) {
         req.session.user = firstTryUser;
+         console.log("#### I am here #5 #####"); 
         res.render(
           'pages/sendMail',
           {
@@ -76,6 +77,7 @@ function renderSendMail(req, res) {
                 function (secondRequestError, secondTryUser) {
                   if (secondTryUser !== null) {
                     req.session.user = secondTryUser;
+                     console.log("#### I am here #6 #####"); 
                     res.render(
                       'pages/sendMail',
                       {
