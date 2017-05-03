@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
 
 router.get('/disconnect', function (req, res) {
   // check for token
-  //req.session.destroy();
+  req.session.destroy();
   res.clearCookie('nodecookie');
   clearCookies(res);
   res.status(200);
@@ -55,7 +55,7 @@ function renderSendMail(req, res) {
     req.cookies.ACCESS_TOKEN_CACHE_KEY,
     function (firstRequestError, firstTryUser) {
       if (firstTryUser !== null) {
-        //req.session.user = firstTryUser;
+        req.session.user = firstTryUser;
         res.render(
           'sendMail',
           {
@@ -74,7 +74,7 @@ function renderSendMail(req, res) {
                 req.cookies.ACCESS_TOKEN_CACHE_KEY,
                 function (secondRequestError, secondTryUser) {
                   if (secondTryUser !== null) {
-                   // req.session.user = secondTryUser;
+                    req.session.user = secondTryUser;
                     res.render(
                       'sendMail',
                       {
@@ -102,12 +102,12 @@ function renderSendMail(req, res) {
 router.post('/', function (req, res) {
   var destinationEmailAddress = req.body.default_email;
   var mailBody = emailer.generateMailBody(
-   // req.session.user.displayName,
+    req.session.user.displayName,
     destinationEmailAddress
   );
   var templateData = {
-  //  display_name: req.session.user.displayName,
-   // user_principal_name: req.session.user.userPrincipalName,
+    display_name: req.session.user.displayName,
+   user_principal_name: req.session.user.userPrincipalName,
     actual_recipient: destinationEmailAddress
   };
 
