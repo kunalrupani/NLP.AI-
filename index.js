@@ -12,7 +12,7 @@ const uuid = require('uuid');
 const {receivedMessage} = require('./helperfunctions/askrupanibot');
 
 //o365 imports
-var session = require('express-session');
+// var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
@@ -36,14 +36,14 @@ app.use(bodyParser.json())
 //Middleware for cookie management
 app.use(cookieParser());
 
-// session middleware configuration
-// see https://github.com/expressjs/session
-app.use(session({
-  secret: '12345QWERTY-SECRET',
-  name: 'nodecookie',
-  resave: false,
-  saveUninitialized: false
-}));
+// // session middleware configuration
+// // see https://github.com/expressjs/session
+// app.use(session({
+//   secret: '12345QWERTY-SECRET',
+//   name: 'nodecookie',
+//   resave: false,
+//   saveUninitialized: false
+// }));
 
 
 // views is directory for all template files
