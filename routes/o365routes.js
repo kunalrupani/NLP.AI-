@@ -51,7 +51,7 @@ router.get('/login', function (req, res) {
 });
 
 function renderSendMail(req, res) {
-    res.render("Hello Sendmail");
+    res.send('Hello Sendmail');
 //   requestUtil.getUserData(
 //     req.cookies.ACCESS_TOKEN_CACHE_KEY,
 //     function (firstRequestError, firstTryUser) {
