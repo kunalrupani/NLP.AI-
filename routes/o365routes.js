@@ -30,14 +30,14 @@ router.get('/login', function (req, res) {
   console.log("#### I am here #2 #####"); 
   if (req.query.code !== undefined) {
     console.log("#### I am here #2.1 #####"); 
-    console.log(req.query.code);
+    //console.log(req.query.code);
     authHelper.getTokenFromCode(req.query.code, function (e, accessToken, refreshToken) {
       if (e === null) {
         
         // cache the refresh token in a cookie and go back to index
         res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
         res.cookie(authHelper.REFRESH_TOKEN_CACHE_KEY, refreshToken);
-        res.redirect('/');
+        res.redirect('/o365/');
       } else {
         console.log(JSON.parse(e.data).error_description);
         res.status(500);
