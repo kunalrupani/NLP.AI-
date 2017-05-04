@@ -104,19 +104,19 @@ router.post('/', function (req, res) {
 
 router.get('/calendar/view', (req,rsp) => {
 
-// request('http://www.google.com' , function (error, response, body) {
-//   console.log("Hello calendar ***********************");
-//   console.log('error:', error); // Print the error if one occurred
-//   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//   console.log('body:', body); // Print the HTML for the Google homepage.
-// });
+  var headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY,
+    'Content-Length': mailBody.length
+  };
+  var options = {
+    host: 'graph.microsoft.com',
+    path: '/v1.0/me/calendars',
+    method: 'POST',
+    headers: headers
+  };
 
-request('https://graph.microsoft.com/v1.0/me/calendars', 
-  {
-  'auth': {
-    'bearer': req.cookies.ACCESS_TOKEN_CACHE_KEY
-   }
-  }, function (error, response, body) {
+request(options, function (error, response, body) {
   console.log("Hello calendar ***********************");
   console.log('error:', error); // Print the error if one occurred
   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
