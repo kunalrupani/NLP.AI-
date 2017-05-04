@@ -162,7 +162,9 @@ function renderSendMail(req, res) {
         authHelper.getTokenFromRefreshToken(
           req.cookies.REFRESH_TOKEN_CACHE_KEY,
           function (refreshError, accessToken) {
+            console.log("#### I am here #11 #####");
             res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
+            console.log("#### I am here #12 #####");
             if (accessToken !== null) {
              console.log('ACCESSTOKEN ****',accessToken); 
               requestUtil.getUserData(
