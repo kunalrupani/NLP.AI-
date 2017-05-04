@@ -157,7 +157,7 @@ function renderSendMail(req, res) {
           }
         );
       } else if (hasAccessTokenExpired(firstRequestError)) {
-       console.log("#### I am here #5 #####");    
+       console.log("#### I am here #6 #####");    
         // Handle the refresh flow
         authHelper.getTokenFromRefreshToken(
           req.cookies.REFRESH_TOKEN_CACHE_KEY,
@@ -169,7 +169,7 @@ function renderSendMail(req, res) {
                 function (secondRequestError, secondTryUser) {
                   if (secondTryUser !== null) {
                     req.session.user = secondTryUser;
-                     console.log("#### I am here #6 #####"); 
+                     console.log("#### I am here #7 #####"); 
                     res.render(
                       'pages/sendMail',
                       {
@@ -179,18 +179,18 @@ function renderSendMail(req, res) {
                     );
                   } else {
                     clearCookies(res);
-                    console.log("#### I am here #7 #####"); 
+                    console.log("#### I am here #8 #####"); 
                     renderError(res, secondRequestError);
                   }
                 }
               );
             } else {
-              console.log("#### I am here #8 #####");   
+              console.log("#### I am here #9 #####");   
               renderError(res, refreshError);
             }
           });
       } else {
-        console.log("#### I am here #9 #####"); 
+        console.log("#### I am here #10 #####"); 
         renderError(res, firstRequestError);
       }
     }
