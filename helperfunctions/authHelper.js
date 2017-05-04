@@ -65,6 +65,28 @@ function getTokenFromCode(code, callback) {
  * @param {AcquireTokenCallback} callback The callback function.
  */
 function getTokenFromRefreshToken(refreshToken, callback) {
+  var OAuth2 = OAuth.OAuth2;
+  var oauth2 = new OAuth2(
+    credentials.client_id,
+    credentials.client_secret,
+    credentials.authority,
+    credentials.authorize_endpoint,
+    credentials.token_endpoint
+  );
+
+  oauth2.getOAuthAccessToken(
+    refreshToken,
+    {
+      grant_type: 'refresh_token',
+      redirect_uri: credentials.redirect_uri,
+      response_mode: 'form_post',
+      nonce: uuid.v4(),
+      state: 'abcd'
+    },
+    function (e, accessToken) {
+      callback(e, accessToken);
+    }
+  );
 }
 
 exports.credentials = credentials;
