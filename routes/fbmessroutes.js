@@ -1,6 +1,6 @@
 
-var express = require('express');
-var router = express.Router();
+// var express = require('express');
+// var router = express.Router();
 
 // const apiai = require('apiai');
 // const config = require('../config');
