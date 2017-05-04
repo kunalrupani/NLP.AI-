@@ -91,8 +91,8 @@ function verifyRequestSignature(req, res, buf) {
 }
 
 //Express Router for fbmessenger routes
-//app.use('/askRupaniBot', fbMessroutes);
-app.use('/askRupaniBot', o365routes);
+app.use('/askRupaniBot', fbMessroutes);
+//app.use('/askRupaniBot', o365routes);
 
 
 // -------------- End FB AskRupaniBot -------------//
