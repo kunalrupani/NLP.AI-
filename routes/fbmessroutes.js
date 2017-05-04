@@ -2,8 +2,13 @@
 var express = require('express');
 var router = express.Router();
 
+const apiai = require('apiai');
+const config = require('./config');
+const uuid = require('uuid');
+const {receivedMessage} = require('./helperfunctions/askrupanibot');
+
 // For Facebook verification
-router.get('/webhook/', function (req, res) {
+router.get('/webhook', function (req, res) {
 	console.log("request");
 	if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === config.FB_VERIFY_TOKEN) {
 		res.status(200).send(req.query['hub.challenge']);
@@ -14,7 +19,7 @@ router.get('/webhook/', function (req, res) {
 })
 
 // Facebook Callbacks - all of them are POST requests
-router.post('/webhook/', function (req, res) {
+router.post('/webhook', function (req, res) {
 	var data = req.body;
 	console.log("************New Request**************");
 	console.log(JSON.stringify(data));
