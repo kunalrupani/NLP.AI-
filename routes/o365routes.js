@@ -164,6 +164,7 @@ function renderSendMail(req, res) {
           function (refreshError, accessToken) {
             res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
             if (accessToken !== null) {
+             console.log('ACCESSTOKEN ****',accessToken); 
               requestUtil.getUserData(
                 req.cookies.ACCESS_TOKEN_CACHE_KEY,
                 function (secondRequestError, secondTryUser) {
