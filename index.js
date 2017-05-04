@@ -25,9 +25,6 @@ var fbmessroutes = require('./routes/fbmessroutes');
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-
-app.use(app.router);
-
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
 	extended: false
