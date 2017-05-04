@@ -104,7 +104,12 @@ router.post('/', function (req, res) {
 
 router.get('/calendar/view', (req,rsp) => {
 
-request('https://graph.microsoft.com/v1.0/me/calendars', function (error, response, body) {
+request('https://graph.microsoft.com/v1.0/me/calendars', 
+  {
+  'auth': {
+    'bearer': req.cookies.ACCESS_TOKEN_CACHE_KEY
+   }
+  }, function (error, response, body) {
   console.log("Hello calendar ***********************");
   console.log('error:', error); // Print the error if one occurred
   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
