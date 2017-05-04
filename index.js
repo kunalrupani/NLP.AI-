@@ -6,16 +6,11 @@ const request = require('request');
 const app = express();
 
 // AskRupaniBot imports
-// const apiai = require('apiai');
-// const config = require('./config');
-// const uuid = require('uuid');
 const {receivedMessage,verifyRequestSignature} = require('./helperfunctions/askrupanibot');
 var fbMessroutes = require('./routes/fbmessroutes');
 
 //o365 imports
 var session = require('express-session');
-//var path = require('path');
-//var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var o365routes = require('./routes/o365routes');
 
@@ -57,8 +52,6 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 
-
-
 // ------------ Express Paths--------------------//
 app.get('/', function(request, response) {
   response.render('pages/index');
@@ -68,11 +61,8 @@ app.get('/', function(request, response) {
 
 // -------------- Start FB AskRupaniBot -------------//
 
-
-
-
 //Express Router for fbmessenger routes
-app.use('/askRupaniBot',fbMessroutes);
+//app.use('/askRupaniBot',fbMessroutes);
 
 
 // -------------- End FB AskRupaniBot -------------//
