@@ -10,6 +10,7 @@ const apiai = require('apiai');
 const config = require('./config');
 const uuid = require('uuid');
 const {receivedMessage} = require('./helperfunctions/askrupanibot');
+var fbMessroutes = require('./routes/fbmessroutes');
 
 //o365 imports
 var session = require('express-session');
@@ -17,7 +18,6 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var o365routes = require('./routes/o365routes');
-var fbMessroutes = require('./routes/fbmessroutes');
 
 
 // Express Middleware
@@ -91,8 +91,8 @@ function verifyRequestSignature(req, res, buf) {
 }
 
 //Express Router for fbmessenger routes
-//app.use('/askRupaniBot', fbMessroutes);
-app.use('/askRupaniBot', o365routes);
+app.use('/askRupaniBot',fbMessroutes);
+//app.use('/askRupaniBot', o365routes);
 
 
 // -------------- End FB AskRupaniBot -------------//
