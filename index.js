@@ -17,7 +17,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var o365routes = require('./routes/o365routes');
-var fbmessroutes = require('./routes/fbmessroutes');
+var fbMessroutes = require('./routes/fbmessroutes');
 
 
 // Express Middleware
@@ -54,9 +54,9 @@ app.set('view engine', 'ejs');
 
 
 // ------------ Express Paths--------------------//
-app.get('/', function(request, response) {
-  response.render('pages/index');
-});
+// app.get('/', function(request, response) {
+//   response.render('pages/index');
+// });
 
 
 
@@ -88,7 +88,7 @@ function verifyRequestSignature(req, res, buf) {
 }
 
 //Express Router for fbmessenger routes
-app.use('/askRupaniBot', fbmessroutes);
+app.use('/askRupaniBot', fbMessroutes);
 
 
 // -------------- End FB AskRupaniBot -------------//
