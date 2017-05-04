@@ -25,6 +25,9 @@ var fbmessroutes = require('./routes/fbmessroutes');
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
+
+app.use(app.router);
+
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
 	extended: false
@@ -62,30 +65,30 @@ app.get('/', function(request, response) {
 
 // -------------- Start FB AskRupaniBot -------------//
 
-// //Middleware to verify request came from facebook
-// app.use(bodyParser.json({
-// 	verify: verifyRequestSignature
-// }));
+//Middleware to verify request came from facebook
+app.use(bodyParser.json({
+	verify: verifyRequestSignature
+}));
 
-// function verifyRequestSignature(req, res, buf) {
-// 	var signature = req.headers["x-hub-signature"];
+function verifyRequestSignature(req, res, buf) {
+	var signature = req.headers["x-hub-signature"];
 
-// 	if (!signature) {
-// 		throw new Error('Couldn\'t validate the signature.');
-// 	} else {
-// 		var elements = signature.split('=');
-// 		var method = elements[0];
-// 		var signatureHash = elements[1];
+	if (!signature) {
+		throw new Error('Couldn\'t validate the signature.');
+	} else {
+		var elements = signature.split('=');
+		var method = elements[0];
+		var signatureHash = elements[1];
 
-// 		var expectedHash = crypto.createHmac('sha1', config.FB_APP_SECRET)
-// 			.update(buf)
-// 			.digest('hex');
+		var expectedHash = crypto.createHmac('sha1', config.FB_APP_SECRET)
+			.update(buf)
+			.digest('hex');
 
-// 		if (signatureHash != expectedHash) {
-// 			throw new Error("Couldn't validate the request signature.");
-// 		}
-// 	}
-// }
+		if (signatureHash != expectedHash) {
+			throw new Error("Couldn't validate the request signature.");
+		}
+	}
+}
 
 //Express Router for fbmessenger routes
 app.use('/askRupaniBot', fbmessroutes);

@@ -1,6 +1,8 @@
 
 var express = require('express');
 var router = express.Router();
+
+//Helper function imports
 var authHelper = require('../helperfunctions/authHelper.js');
 var requestUtil = require('../helperfunctions/requestUtil.js');
 var emailer = require('../helperfunctions/emailer.js');
