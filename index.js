@@ -33,6 +33,12 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json())
 
+// //Middleware to verify request came from facebook
+// app.use(bodyParser.json({
+// 	verify: verifyRequestSignature
+// }));
+
+
 //Middleware for cookie management
 app.use(cookieParser());
 
@@ -54,18 +60,15 @@ app.set('view engine', 'ejs');
 
 
 // ------------ Express Paths--------------------//
-// app.get('/', function(request, response) {
-//   response.render('pages/index');
-// });
+app.get('/', function(request, response) {
+  response.render('pages/index');
+});
 
 
 
 // -------------- Start FB AskRupaniBot -------------//
 
-//Middleware to verify request came from facebook
-app.use(bodyParser.json({
-	verify: verifyRequestSignature
-}));
+
 
 function verifyRequestSignature(req, res, buf) {
 	var signature = req.headers["x-hub-signature"];
