@@ -12,7 +12,7 @@ router.get('/', function (req, res) {
   // check for token
   console.log("#### I am here #1 #####");
   if (req.cookies.REFRESH_TOKEN_CACHE_KEY === undefined) {
-    res.redirect('login');
+    res.redirect('/o365/login');
   } else {
     renderSendMail(req, res);
   }

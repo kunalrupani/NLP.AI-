@@ -62,7 +62,7 @@ app.get('/', function(request, response) {
 // -------------- Start FB AskRupaniBot -------------//
 
 //Express Router for fbmessenger routes
-//app.use('/askRupaniBot',fbMessroutes);
+app.use('/askRupaniBot',fbMessroutes);
 
 
 // -------------- End FB AskRupaniBot -------------//
