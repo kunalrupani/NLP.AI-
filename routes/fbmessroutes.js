@@ -1,11 +1,11 @@
 
-// var express = require('express');
-// var router = express.Router();
+var express = require('express');
+var router = express.Router();
 
-// const apiai = require('apiai');
-// const config = require('../config');
-// const uuid = require('uuid');
-// const {receivedMessage} = require('../helperfunctions/askrupanibot');
+const apiai = require('apiai');
+const config = require('../config');
+const uuid = require('uuid');
+const {receivedMessage} = require('../helperfunctions/askrupanibot');
 
 
 /* GET home page. */
