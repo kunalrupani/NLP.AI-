@@ -2,17 +2,15 @@
 var express = require('express');
 var router = express.Router();
 
-const apiai = require('apiai');
-const config = require('../config');
-const uuid = require('uuid');
-const {receivedMessage} = require('../helperfunctions/askrupanibot');
+// const apiai = require('apiai');
+// const config = require('../config');
+// const uuid = require('uuid');
+// const {receivedMessage} = require('../helperfunctions/askrupanibot');
 
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  // check for token
   console.log("Received a root request for askRupaniBot");
-  //res.redirect('/webhook');
 });
 
 // // For Facebook verification
