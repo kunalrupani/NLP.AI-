@@ -5,7 +5,7 @@ var router = express.Router();
 const apiai = require('apiai');
 const config = require('../config');
 const uuid = require('uuid');
-const {receivedMessage} = require('./helperfunctions/askrupanibot');
+const {receivedMessage} = require('../helperfunctions/askrupanibot');
 
 // For Facebook verification
 router.get('/webhook', function (req, res) {
