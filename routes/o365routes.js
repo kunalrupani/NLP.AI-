@@ -157,6 +157,7 @@ function renderSendMail(req, res) {
           }
         );
       } else if (hasAccessTokenExpired(firstRequestError)) {
+       console.log("#### I am here #5 #####");    
         // Handle the refresh flow
         authHelper.getTokenFromRefreshToken(
           req.cookies.REFRESH_TOKEN_CACHE_KEY,
@@ -178,15 +179,18 @@ function renderSendMail(req, res) {
                     );
                   } else {
                     clearCookies(res);
+                    console.log("#### I am here #7 #####"); 
                     renderError(res, secondRequestError);
                   }
                 }
               );
             } else {
+              console.log("#### I am here #8 #####");   
               renderError(res, refreshError);
             }
           });
       } else {
+        console.log("#### I am here #9 #####"); 
         renderError(res, firstRequestError);
       }
     }
