@@ -121,7 +121,7 @@ router.post('/', function (req, res) {
     JSON.stringify(mailBody),
     function (firstRequestError) {
       if (!firstRequestError) {
-        res.render('sendMail', templateData);
+        res.render('pages/sendMail', templateData);
       } else if (hasAccessTokenExpired(firstRequestError)) {
         // Handle the refresh flow
         authHelper.getTokenFromRefreshToken(
@@ -134,7 +134,7 @@ router.post('/', function (req, res) {
                 JSON.stringify(mailBody),
                 function (secondRequestError) {
                   if (!secondRequestError) {
-                    res.render('sendMail', templateData);
+                    res.render('pages/sendMail', templateData);
                   } else {
                     clearCookies(res);
                     renderError(res, secondRequestError);
