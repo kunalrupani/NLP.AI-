@@ -102,7 +102,7 @@ router.post('/', function (req, res) {
 });
 
 
-router.post('/calendar/view', (req,rsp) => {
+router.get('/calendar/view', (req,rsp) => {
 
 request('https://graph.microsoft.com/v1.0/me/calendars', function (error, response, body) {
   console.log("Hello calendar ***********************");
@@ -168,7 +168,8 @@ function renderSendMail(req, res) {
             if (accessToken !== null) {
              console.log('ACCESSTOKEN ****',accessToken); 
               requestUtil.getUserData(
-                req.cookies.ACCESS_TOKEN_CACHE_KEY,
+                accessToken,  
+                // ****** req.cookies.ACCESS_TOKEN_CACHE_KEY,
                 function (secondRequestError, secondTryUser) {
                   if (secondTryUser !== null) {
                     req.session.user = secondTryUser;
@@ -183,18 +184,23 @@ function renderSendMail(req, res) {
                   } else {
                     clearCookies(res);
                     console.log("#### I am here #8 #####"); 
-                    renderError(res, secondRequestError);
+                    //renderError(res, secondRequestError);
                   }
                 }
               );
             } else {
               console.log("#### I am here #9 #####");   
-              renderError(res, refreshError);
+              //renderError(res, refreshError);
+              clearCookies(res);
+              res.redirect('/o365/login');
             }
           });
       } else {
         console.log("#### I am here #10 #####"); 
-        renderError(res, firstRequestError);
+
+        //renderError(res, firstRequestError);
+        clearCookies(res);
+        res.redirect('/o365/login');
       }
     }
   );
