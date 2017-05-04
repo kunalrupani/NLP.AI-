@@ -4,7 +4,7 @@ var router = express.Router();
 
 
 // For Facebook verification
-app.get('/askRupaniBot/webhook/', function (req, res) {
+router.get('/askRupaniBot/webhook/', function (req, res) {
 	console.log("request");
 	if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === config.FB_VERIFY_TOKEN) {
 		res.status(200).send(req.query['hub.challenge']);
@@ -15,7 +15,7 @@ app.get('/askRupaniBot/webhook/', function (req, res) {
 })
 
 // Facebook Callbacks - all of them are POST requests
-app.post('/askRupaniBot/webhook/', function (req, res) {
+router.post('/askRupaniBot/webhook/', function (req, res) {
 	var data = req.body;
 	console.log("************New Request**************");
 	console.log(JSON.stringify(data));
