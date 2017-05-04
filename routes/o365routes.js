@@ -106,8 +106,8 @@ router.get('/calendar/view', (req,rsp) => {
 
   var headers = {
     'Content-Type': 'application/json',
-    Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY,
-    'Content-Length': mailBody.length
+    Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY
+    //'Content-Length': mailBody.length
   };
   var options = {
     host: 'graph.microsoft.com',
