@@ -1,6 +1,7 @@
 
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 
 //Helper function imports
 var authHelper = require('../helperfunctions/authHelper.js');
@@ -51,6 +52,94 @@ router.get('/login', function (req, res) {
     res.render('pages/o365login', { auth_url: authHelper.getAuthUrl() });
   }
 });
+
+router.post('/', function (req, res) {
+  var destinationEmailAddress = req.body.default_email;
+  var mailBody = emailer.generateMailBody(
+    req.session.user.displayName,
+    destinationEmailAddress
+  );
+  var templateData = {
+    display_name: req.session.user.displayName,
+   user_principal_name: req.session.user.userPrincipalName,
+    actual_recipient: destinationEmailAddress
+  };
+
+  requestUtil.postSendMail(
+    req.cookies.ACCESS_TOKEN_CACHE_KEY,
+    JSON.stringify(mailBody),
+    function (firstRequestError) {
+      if (!firstRequestError) {
+        res.render('pages/sendMail', templateData);
+      } else if (hasAccessTokenExpired(firstRequestError)) {
+        // Handle the refresh flow
+        authHelper.getTokenFromRefreshToken(
+          req.cookies.REFRESH_TOKEN_CACHE_KEY,
+          function (refreshError, accessToken) {
+            res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
+            if (accessToken !== null) {
+              requestUtil.postSendMail(
+                req.cookies.ACCESS_TOKEN_CACHE_KEY,
+                JSON.stringify(mailBody),
+                function (secondRequestError) {
+                  if (!secondRequestError) {
+                    res.render('pages/sendMail', templateData);
+                  } else {
+                    clearCookies(res);
+                    renderError(res, secondRequestError);
+                  }
+                }
+              );
+            } else {
+              renderError(res, refreshError);
+            }
+          });
+      } else {
+        renderError(res, firstRequestError);
+      }
+    }
+  );
+});
+
+
+router.post('/calendar/view', (req,rsp) => {
+
+request('https://graph.microsoft.com/v1.0/me/calendars', function (error, response, body) {
+  console.log("Hello calendar ***********************");
+  console.log('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+});
+
+});
+
+
+
+/*** HElPER Functions ********/
+
+function hasAccessTokenExpired(e) {
+  var expired;
+  if (!e.innerError) {
+    expired = false;
+  } else {
+    expired = e.code === 401 &&
+      e.innerError.code === 'InvalidAuthenticationToken' &&
+      e.innerError.message === 'Access token has expired.';
+  }
+  return expired;
+}
+
+function clearCookies(res) {
+  res.clearCookie(authHelper.ACCESS_TOKEN_CACHE_KEY);
+  res.clearCookie(authHelper.REFRESH_TOKEN_CACHE_KEY);
+}
+
+function renderError(res, e) {
+  res.render('error', {
+    message: e.message,
+    error: e
+  });
+}
 
 function renderSendMail(req, res) {
     console.log("#### I am here #4 #####"); 
@@ -104,76 +193,6 @@ function renderSendMail(req, res) {
   );
 }
 
-router.post('/', function (req, res) {
-  var destinationEmailAddress = req.body.default_email;
-  var mailBody = emailer.generateMailBody(
-    req.session.user.displayName,
-    destinationEmailAddress
-  );
-  var templateData = {
-    display_name: req.session.user.displayName,
-   user_principal_name: req.session.user.userPrincipalName,
-    actual_recipient: destinationEmailAddress
-  };
-
-  requestUtil.postSendMail(
-    req.cookies.ACCESS_TOKEN_CACHE_KEY,
-    JSON.stringify(mailBody),
-    function (firstRequestError) {
-      if (!firstRequestError) {
-        res.render('pages/sendMail', templateData);
-      } else if (hasAccessTokenExpired(firstRequestError)) {
-        // Handle the refresh flow
-        authHelper.getTokenFromRefreshToken(
-          req.cookies.REFRESH_TOKEN_CACHE_KEY,
-          function (refreshError, accessToken) {
-            res.cookie(authHelper.ACCESS_TOKEN_CACHE_KEY, accessToken);
-            if (accessToken !== null) {
-              requestUtil.postSendMail(
-                req.cookies.ACCESS_TOKEN_CACHE_KEY,
-                JSON.stringify(mailBody),
-                function (secondRequestError) {
-                  if (!secondRequestError) {
-                    res.render('pages/sendMail', templateData);
-                  } else {
-                    clearCookies(res);
-                    renderError(res, secondRequestError);
-                  }
-                }
-              );
-            } else {
-              renderError(res, refreshError);
-            }
-          });
-      } else {
-        renderError(res, firstRequestError);
-      }
-    }
-  );
-});
-
-function hasAccessTokenExpired(e) {
-  var expired;
-  if (!e.innerError) {
-    expired = false;
-  } else {
-    expired = e.code === 401 &&
-      e.innerError.code === 'InvalidAuthenticationToken' &&
-      e.innerError.message === 'Access token has expired.';
-  }
-  return expired;
-}
-
-function clearCookies(res) {
-  res.clearCookie(authHelper.ACCESS_TOKEN_CACHE_KEY);
-  res.clearCookie(authHelper.REFRESH_TOKEN_CACHE_KEY);
-}
-
-function renderError(res, e) {
-  res.render('error', {
-    message: e.message,
-    error: e
-  });
-}
+/********END HELPER FUNCTIONS *******/
 
 module.exports = router;
