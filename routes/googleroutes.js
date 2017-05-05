@@ -69,7 +69,7 @@ router.get('/login', function (req, res) {
   console.log("#### I am in Google login #####"); 
   console.log('REQ HEADERS',req.headers);
   console.log('REQ BODY',req.body);
-  
+  console.log('REQ QUERY********',req.query.code);
 });
 
 module.exports = router;
