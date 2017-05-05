@@ -75,12 +75,13 @@ router.get('/login', function (req, res) {
   authcode= req.query.code;
 
   oauth2Client.getToken(authcode, function (err, tokens) {
+    console.log('Received Access Token $$$$$$$$$$$$$$$$$$$$$$$$', tokens);
   // Now tokens contains an access_token and an optional refresh_token. Save them.
   if (!err) {
     oauth2Client.setCredentials(tokens);
   }
 });
-  console.log('Saved Access Token $$$$$$$$$$$$$$$$$$$$$$$$', oauth2Client.code);
+  //console.log('Saved Access Token $$$$$$$$$$$$$$$$$$$$$$$$', oauth2Client.code);
 
 });
 
@@ -89,8 +90,6 @@ router.get('/login', function (req, res) {
 router.get('/listcalendars', function (req, res) {
   console.log("#### I am in Google list calendars #####"); 
   
-    //require('request').debug = true;
-//oauth2Client.getToken.
     var options = {
         uri: "https://www.googleapis.com/calendar/v3/calendars/kunalrupani%40gmail.com/events?key=",  
         method: 'GET',
