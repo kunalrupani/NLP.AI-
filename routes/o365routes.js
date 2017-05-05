@@ -111,7 +111,7 @@ console.log('REQ.COOKIES.ACCESS_TOKEN', req.cookies.ACCESS_TOKEN_CACHE_KEY);
 //    'Content-Length': 0
   };
   var options = {
-    url: 'https://graph.microsoft.com/v1.0/me/calendars/',  
+    uri: 'https://graph.microsoft.com/v1.0/me/calendars/',  
     host: 'graph.microsoft.com',
     path: '/v1.0/me/calendars',
     method: 'GET',
