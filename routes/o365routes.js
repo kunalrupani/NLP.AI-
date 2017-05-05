@@ -107,7 +107,7 @@ router.get('/calendar/view', (req,rsp) => {
   var headers = {
     'Content-Type': 'application/json',
     Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY,
-    'Content-Length': 10
+    'Content-Length': 0
   };
   var options = {
     url: 'https://graph.microsoft.com/v1.0/me/calendars/',  
