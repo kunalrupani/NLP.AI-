@@ -6,7 +6,7 @@ const request = require('request');
 const app = express();
 
 // AskRupaniBot imports
-const {receivedMessage,verifyRequestSignature} = require('/helperfunctions/askrupanibot');
+const {receivedMessage,verifyRequestSignature} = require('../helperfunctions/askrupanibot');
 var fbMessroutes = require('./routes/fbmessroutes');
 
 //o365 imports
