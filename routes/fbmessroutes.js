@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const apiai = require('apiai');
 const config = require('../config');
 const uuid = require('uuid');
-var {receivedMessage} = require('./helperfunctions/askrupanibot');
+var {receivedMessage} = require('../helperfunctions/askrupanibot');
 
 
 /* GET home page. */
