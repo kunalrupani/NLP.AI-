@@ -71,6 +71,41 @@ router.get('/login', function (req, res) {
   console.log('REQ HEADERS',req.headers);
   console.log('REQ BODY',req.body);
   console.log('REQ QUERY********',req.query.code);
+
+  authcode= req.query.code;
+
+  oauth2Client.getToken(authcode, function (err, tokens) {
+  // Now tokens contains an access_token and an optional refresh_token. Save them.
+  if (!err) {
+    oauth2Client.setCredentials(tokens);
+  }
+});
+  console.log('Saved Access Token $$$$$$$$$$$$$$$$$$$$$$$$', oauth2Client.getToken);
+
+});
+
+
+/*Authentication page. */
+router.get('/listcalendars', function (req, res) {
+  console.log("#### I am in Google list calendars #####"); 
+  
+    //require('request').debug = true;
+//oauth2Client.getToken.
+    var options = {
+        uri: "https://www.googleapis.com/calendar/v3/calendars/kunalrupani%40gmail.com/events?key=",  
+        method: 'GET',
+       // headers: headers
+    };
+
+    request(options, function (error, response, body) {
+    
+    console.log("Hello calendar ***********************");
+    console.log('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  //  console.log('body:', body); // Print the HTML for the Google homepage.
+    });
+
+
 });
 
 module.exports = router;
