@@ -4,7 +4,7 @@ var request = require('request');
 
 const google = require('googleapis');
 
-
+var accessToken;
 
 
 var OAuth2 = google.auth.OAuth2;
@@ -75,7 +75,7 @@ router.get('/login', function (req, res) {
   authcode= req.query.code;
 
   oauth2Client.getToken(authcode, function (err, tokens) {
-    console.log('Received Access Token $$$$$$$$$$$$$$$$$$$$$$$$', tokens);
+    console.log('Received Access Token $$$$$$$$$$$$$$$$$$$$$$$$', tokens.accessToken);
   // Now tokens contains an access_token and an optional refresh_token. Save them.
   if (!err) {
     oauth2Client.setCredentials(tokens);
@@ -84,16 +84,24 @@ router.get('/login', function (req, res) {
   //console.log('Saved Access Token $$$$$$$$$$$$$$$$$$$$$$$$', oauth2Client.code);
 
 });
+accessToken=tokens.accessToken;
 
 
 /*Authentication page. */
 router.get('/listcalendars', function (req, res) {
   console.log("#### I am in Google list calendars #####"); 
   
+  var headers = {
+ 
+     Accept: 'application/json',
+     Authorization: 'Bearer ' + accessToken
+  };
+
+  
     var options = {
-        uri: "https://www.googleapis.com/calendar/v3/calendars/kunalrupani%40gmail.com/events?key=",  
+        uri: "https://www.googleapis.com/calendar/v3/calendars/kunalrupani%40gmail.com/events?key=739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com",  
         method: 'GET',
-       // headers: headers
+        headers: headers
     };
 
     request(options, function (error, response, body) {
