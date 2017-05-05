@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+var request = require('request');
 
 const google = require('googleapis');
 
@@ -26,7 +27,7 @@ router.get('/', function (req, res) {
 
 
 /*Authentication page. */
-router.get('/login', function (req, res) {
+router.get('/loginfirst', function (req, res) {
   console.log("#### I am in Google login #####"); 
   // generate a url that asks permissions for Google+ and Google Calendar scopes
     var scopes = [
@@ -42,9 +43,33 @@ router.get('/login', function (req, res) {
     scope: scopes,
 
      });
+ 
+     console.log('Google URL******', url);
 
-     console.log('Google URL', url);
+//     require('request').debug = true;
+
+//     var options = {
+//         uri: url,  
+//         method: 'GET',
+//         headers: headers
+//     };
+
+//     request(options, function (error, response, body) {
+    
+//     console.log("Hello calendar ***********************");
+//     console.log('error:', error); // Print the error if one occurred
+//     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+//     console.log('body:', body); // Print the HTML for the Google homepage.
+//     });
+
+ });
+
+/*Authentication page. */
+router.get('/login', function (req, res) {
+  console.log("#### I am in Google login #####"); 
+  console.log('REQ HEADERS',req.headers);
+  console.log('REQ BODY',req.body);
+  
 });
-
 
 module.exports = router;
