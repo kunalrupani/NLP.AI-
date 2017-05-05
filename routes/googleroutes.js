@@ -51,7 +51,7 @@ router.get('/loginfirst', function (req, res) {
     var options = {
         uri: url,  
         method: 'GET',
-        headers: headers
+       // headers: headers
     };
 
     request(options, function (error, response, body) {
