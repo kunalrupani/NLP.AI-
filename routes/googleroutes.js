@@ -75,7 +75,7 @@ router.get('/login', function (req, res) {
   authcode= req.query.code;
 
   oauth2Client.getToken(authcode, function (err, tokens) {
-    console.log('Received Access Token $$$$$$$$$$$$$$$$$$$$$$$$', tokens.accessToken);
+    console.log('Received Access Token $$$$$$$$$$$$$$$$$$$$$$$$', tokens.access_token);
   // Now tokens contains an access_token and an optional refresh_token. Save them.
   if (!err) {
     oauth2Client.setCredentials(tokens);
@@ -84,7 +84,7 @@ router.get('/login', function (req, res) {
   //console.log('Saved Access Token $$$$$$$$$$$$$$$$$$$$$$$$', oauth2Client.code);
 
 });
-accessToken=tokens.accessToken;
+accessToken=tokens.access_token;
 
 
 /*Authentication page. */
