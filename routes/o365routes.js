@@ -118,8 +118,10 @@ console.log('REQ.COOKIES.ACCESS_TOKEN', req.cookies.ACCESS_TOKEN_CACHE_KEY);
     headers: headers
   };
 
+require('request').debug = true;
+
 request(options, function (error, response, body) {
-  require('request').debug = true;
+  
   console.log("Hello calendar ***********************");
   console.log('error:', error); // Print the error if one occurred
   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
