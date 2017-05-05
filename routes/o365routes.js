@@ -111,7 +111,7 @@ router.get('/calendar/view', (req,rsp) => {
   };
   var options = {
     url: 'https://graph.microsoft.com/v1.0/me/calendars/',  
-    method: 'POST',
+    method: 'GET',
     headers: headers
   };
 
