@@ -11,7 +11,7 @@ var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(
   739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com,
   M9cXrkBGQ-JujTgyG2qOAAAe,
-  https://pointylabs.herokuapp.com/google/login
+  'https://pointylabs.herokuapp.com/google/login'
 );
 
 
