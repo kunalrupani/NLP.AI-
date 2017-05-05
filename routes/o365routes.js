@@ -107,11 +107,10 @@ router.get('/calendar/view', (req,rsp) => {
   var headers = {
     'Content-Type': 'application/json',
     Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY,
-    'Content-Length': 0
+    'Content-Length': 10
   };
   var options = {
-    host: 'graph.microsoft.com',
-    path: '/v1.0/me/calendars',
+    url: 'https://graph.microsoft.com/v1.0/me/calendars/',  
     method: 'POST',
     headers: headers
   };
