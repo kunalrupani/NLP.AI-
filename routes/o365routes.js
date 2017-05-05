@@ -28,7 +28,7 @@ router.get('/disconnect', function (req, res) {
   res.redirect('https://pointylabs.herokuapp.com/o365/login');
 });
 
-/* GET home page. */
+/*Authentication page. */
 router.get('/login', function (req, res) {
   console.log("#### I am here #2 #####"); 
   if (req.query.code !== undefined) {

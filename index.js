@@ -8,6 +8,9 @@ const app = express();
 // AskRupaniBot imports
 var fbMessroutes = require('./routes/fbmessroutes');
 
+//Google imports
+var googleroutes = require('./routes/googleroutes');
+
 //o365 imports
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
@@ -87,6 +90,16 @@ app.use('/askRupaniBot',fbMessroutes);
 
 // -------------- End FB AskRupaniBot -------------//
 
+//--------------- Start Google Calendar Section ---------------//
+
+
+//Express Router for o365 routes
+app.use('/google', googleroutes);
+
+
+//--------------- END O365 Section ---------------//
+
+
 
 //--------------- Start O365 Section ---------------//
 
@@ -96,6 +109,10 @@ app.use('/o365', o365routes);
 
 
 //--------------- END O365 Section ---------------//
+
+
+
+
 
 
 // Express listen

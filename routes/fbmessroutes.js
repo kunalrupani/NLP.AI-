@@ -17,7 +17,6 @@ router.get('/', function (req, res) {
 });
 
 
-
 // For Facebook verification
 router.get('/webhook', function (req, res) {
 	console.log("request");
