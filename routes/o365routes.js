@@ -103,7 +103,7 @@ router.post('/', function (req, res) {
 
 
 router.get('/calendar/view', (req,rsp) => {
-
+console.log('REQ.COOKIES.ACCESS_TOKEN', req.cookies.ACCESS_TOKEN_CACHE_KEY);
   var headers = {
     'Content-Type': 'application/json',
     Authorization: 'Bearer ' + req.cookies.ACCESS_TOKEN_CACHE_KEY,
