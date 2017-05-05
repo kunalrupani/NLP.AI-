@@ -45,3 +45,6 @@ router.get('/login', function (req, res) {
 
      console.log('Google URL', url);
 });
+
+
+module.exports = router;
