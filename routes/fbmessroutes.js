@@ -1,11 +1,13 @@
 
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+
 
 const apiai = require('apiai');
 const config = require('../config');
 const uuid = require('uuid');
-const {receivedMessage} = require('../helperfunctions/askrupanibot');
+const {receivedMessage,verifyRequestSignature} = require('./helperfunctions/askrupanibot');
 
 
 /* GET home page. */
@@ -13,6 +15,12 @@ router.get('/', function (req, res) {
   console.log("Received a root request for askRupaniBot");
   //res.redirect('/webhook');
 });
+
+//Middleware to verify request came from facebook
+router.use(bodyParser.json({
+	verify: verifyRequestSignature
+}));
+
 
 // For Facebook verification
 router.get('/webhook', function (req, res) {
