@@ -6,7 +6,7 @@ const request = require('request');
 const app = express();
 
 // AskRupaniBot imports
-const {receivedMessage,verifyRequestSignature} = require('../helperfunctions/askrupanibot');
+const {receivedMessage,verifyRequestSignature} = require('./helperfunctions/askrupanibot');
 var fbMessroutes = require('./routes/fbmessroutes');
 
 //o365 imports
@@ -28,6 +28,10 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json())
 
+//Middleware to verify request came from facebook
+app.use(bodyParser.json({
+	verify: verifyRequestSignature
+}));
 
 
 //Middleware for cookie management
@@ -56,14 +60,23 @@ app.get('/', function(request, response) {
 
 
 // -------------- Start FB AskRupaniBot -------------//
+
+
+
 //Express Router for fbmessenger routes
 app.use('/askRupaniBot',fbMessroutes);
+
+
 // -------------- End FB AskRupaniBot -------------//
 
 
 //--------------- Start O365 Section ---------------//
+
+
 //Express Router for o365 routes
 app.use('/o365', o365routes);
+
+
 //--------------- END O365 Section ---------------//
 
 
