@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const apiai = require('apiai');
 const config = require('../config');
 const uuid = require('uuid');
-const {receivedMessage,verifyRequestSignature} = require('./helperfunctions/askrupanibot');
+const {receivedMessage} = require('./helperfunctions/askrupanibot');
 
 
 /* GET home page. */
@@ -16,10 +16,6 @@ router.get('/', function (req, res) {
   //res.redirect('/webhook');
 });
 
-//Middleware to verify request came from facebook
-router.use(bodyParser.json({
-	verify: verifyRequestSignature
-}));
 
 
 // For Facebook verification
