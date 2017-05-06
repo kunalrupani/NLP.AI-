@@ -81,8 +81,9 @@ router.get('/login', function (req, res) {
     oauth2Client.setCredentials(tokens);
   }
 });
-  console.log('Saved Access Token $$$$$$$$$$$$$$$$$$$$$$$$', JSON.parse(tokens));
+  accessToken = JSON.parse(tokens);
 
+  console.log('ACCESS TOKEN', accessToken.access_token);
 });
 
 
