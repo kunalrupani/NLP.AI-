@@ -80,7 +80,7 @@ router.get('/login', function (req, res) {
   if (!err) {
     oauth2Client.setCredentials(tokens);
   }
-  accessToken = JSON.stringify(tokens);
+  accessToken = tokens.access_token;
   console.log('ACCESS TOKEN', accessToken);
 });
   
@@ -96,7 +96,7 @@ router.get('/listcalendars', function (req, res) {
   var headers = {
  
      Accept: 'application/json',
-     Authorization: 'Bearer ' + accessToken
+     Authorization: 'Bearer ' + JSON.parse(accessToken)
   };
 
   
