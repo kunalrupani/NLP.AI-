@@ -81,10 +81,11 @@ router.get('/login', function (req, res) {
     oauth2Client.setCredentials(tokens);
   }
 });
-  //console.log('Saved Access Token $$$$$$$$$$$$$$$$$$$$$$$$', oauth2Client.code);
+  console.log('Saved Access Token $$$$$$$$$$$$$$$$$$$$$$$$', JSON.parse(tokens));
 
 });
-//accessToken=tokens.access_token;
+
+
 
 
 /*Authentication page. */
