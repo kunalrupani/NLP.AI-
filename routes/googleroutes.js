@@ -80,8 +80,8 @@ router.get('/login', function (req, res) {
   if (!err) {
     oauth2Client.setCredentials(tokens);
   }
-  accessToken = JSON.parse(tokens);
-  console.log('ACCESS TOKEN', accessToken.access_token);
+  accessToken = JSON.stringify(tokens);
+  console.log('ACCESS TOKEN', accessToken);
 });
   
 });
