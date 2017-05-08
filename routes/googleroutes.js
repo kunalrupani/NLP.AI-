@@ -94,9 +94,8 @@ router.get('/listcalendars', function (req, res) {
   console.log("#### I am in Google list calendars #####"); 
   
   var headers = {
- 
-     Accept: 'application/json',
-     Authorization: 'Bearer ' + JSON.parse(accessToken)
+    // Accept: 'application/json',
+     Authorization: 'Bearer ' + accessToken
   };
 
   
