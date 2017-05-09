@@ -101,4 +101,51 @@ router.get('/listcalendars', function (req, res) {
 
 });
 
+
+router.get('/createevent', function (req, res) {
+
+var event = {
+  'summary': 'askRupaniBOT Test',
+  'location': 'Lakebrook Court',
+  'description': 'askRupaniBot experimentation',
+  'start': {
+    'dateTime': '2017-05-9T09:00:00-11:00',
+    'timeZone': 'America/Los_Angeles',
+  },
+  'end': {
+    'dateTime': '2017-05-9T17:00:00-12:00',
+    'timeZone': 'America/Los_Angeles',
+  },
+  'recurrence': [
+    'RRULE:FREQ=DAILY;COUNT=0'
+  ],
+  'attendees': [
+    {'email': 'kunal.rupani@oracle.com'},
+    {'email': 'rupanikunal@hotmail.com'},
+  ],
+  'reminders': {
+    'useDefault': false,
+    'overrides': [
+      {'method': 'email', 'minutes': 24 * 60},
+      {'method': 'popup', 'minutes': 10},
+    ],
+  },
+};
+
+calendar.events.insert({
+  auth: OAuth2,
+  calendarId: 'primary',
+  resource: event,
+}, function(err, event) {
+  if (err) {
+    console.log('There was an error contacting the Calendar service: ' + err);
+    return;
+  }
+  console.log('Event created: %s', event.htmlLink);
+});
+
+});
+
+
 module.exports = router;
+
