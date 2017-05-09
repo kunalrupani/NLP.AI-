@@ -135,7 +135,7 @@ var event = {
 };
 
 calendar.events.insert({
-  auth: auth,
+  auth: oauth2Client,
   calendarId: 'primary',
   resource: event,
 }, function(err, event) {
