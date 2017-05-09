@@ -1,13 +1,14 @@
+
+// This is playground code that works but uses manual APIs as opposed to Calendar Nodejs SDK
+
 const express = require('express');
 const router = express.Router();
-const request = require('request');
+var request = require('request');
 
-//Google SDKs
 const google = require('googleapis');
-const googleAuth = require('google-auth-library');
-
 
 var accessToken;
+
 var calendar = google.calendar('v3');
 var OAuth2 = google.auth.OAuth2;
 
@@ -119,7 +120,7 @@ var event = {
     'timeZone': 'America/Los_Angeles',
   },
   'recurrence': [
-    'RRULE:FREQ=DAILY;COUNT=1'
+    'RRULE:FREQ=DAILY;COUNT=0'
   ],
   'attendees': [
     {'email': 'kunal.rupani@oracle.com'},
@@ -147,6 +148,7 @@ calendar.events.insert({
 });
 
 });
+
 
 module.exports = router;
 
