@@ -100,7 +100,7 @@ router.get('/listcalendars', function (req, res) {
 
   
     var options = {
-        uri: "https://www.googleapis.com/calendar/v3/calendars/kunalrupani%40gmail.com/events?key=739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com",  
+        uri: "https://www.googleapis.com/calendar/v3/calendars/kunalrupani@gmail.com/events?key=739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com",  
         method: 'GET',
         headers: headers
     };
