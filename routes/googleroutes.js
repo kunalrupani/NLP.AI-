@@ -6,7 +6,7 @@ const google = require('googleapis');
 
 var accessToken;
 
-
+var calendar = google.calendar('v3');
 var OAuth2 = google.auth.OAuth2;
 
 var oauth2Client = new OAuth2(
