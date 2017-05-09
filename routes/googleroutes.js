@@ -9,9 +9,9 @@ const googleAuth = require('google-auth-library');
 
 var accessToken;
 var calendar = google.calendar('v3');
-var OAuth2 = google.auth.OAuth2;
+var auth = new googleAuth();
 
-var oauth2Client = new OAuth2(
+var oauth2Client = new auth.OAuth2(
   '739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com',
   'M9cXrkBGQ-JujTgyG2qOAAAe',
   'https://pointylabs.herokuapp.com/google/login'
@@ -135,7 +135,7 @@ var event = {
 };
 
 calendar.events.insert({
-  auth: OAuth2,
+  auth: auth,
   calendarId: 'primary',
   resource: event,
 }, function(err, event) {
