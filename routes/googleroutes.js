@@ -27,7 +27,6 @@ router.get('/', function (req, res) {
 
 });
 
-
 /*Authentication page. */
 router.get('/loginfirst', function (req, res) {
   console.log("#### I am in Google loginfirst #####"); 
@@ -60,6 +59,10 @@ router.get('/login', function (req, res) {
   console.log('REQ QUERY********',req.query.code);
 
   authcode= req.query.code;
+
+  if (authcode == null){
+    res.redirect('/loginfirst');
+  }
 
   oauth2Client.getToken(authcode, function (err, tokens) {
     console.log('Received Access Token $$$$$$$$$$$$$$$$$$$$$$$$', tokens);
