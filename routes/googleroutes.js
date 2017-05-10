@@ -159,7 +159,6 @@ router.get('/listevents', function (req, res) {
   calendar.events.list({
     auth: oauth2Client,
     timeMin: (new Date()).toISOString(),
-    orderBy: 'startTime',
     maxResults: 3,
     calendarId: 'primary'
 }, function(err, events) {
