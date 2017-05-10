@@ -160,6 +160,8 @@ router.get('/listevents', function (req, res) {
     auth: oauth2Client,
     timeMin: (new Date()).toISOString(),
     maxResults: 3,
+    singleEvents: true,
+    orderBy: 'startTime',
     calendarId: 'primary'
 }, function(err, events) {
   if (err) {
