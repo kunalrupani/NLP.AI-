@@ -73,22 +73,26 @@ router.get('/login', function (req, res) {
   // Now tokens contains an access_token and an optional refresh_token. Save them.
   if (!err) {
     oauth2Client.setCredentials(tokens);
-  }
-  console.log('ACCESS TOKEN', tokens.access_token);
-  console.log('REFRESH TOKEN', tokens.refresh_token);
+    console.log(typeof(oauth2Client));
+    console.log('oauth2Client:', oauth2Client);
+}
+
+
+  // console.log('ACCESS TOKEN', tokens.access_token);
+  // console.log('REFRESH TOKEN', tokens.refresh_token);
   
-  var savetokens = new Tokens ({
-    access_token: tokens.access_token,
-    id_token: tokens.id_token,
-    refresh_token: tokens.refresh_token,
-    expiry_date: tokens.expiry_date
-  }
-  );
-  savetokens.save().then(()=>{
-    console.log('Successfully saved Tokens in DB');
-  }, (e) => {
-    console.log('Error Saving tokens in DB:' , e);
-  })
+  // var savetokens = new Tokens ({
+  //   access_token: tokens.access_token,
+  //   id_token: tokens.id_token,
+  //   refresh_token: tokens.refresh_token,
+  //   expiry_date: tokens.expiry_date
+  // }
+  // );
+  // savetokens.save().then(()=>{
+  //   console.log('Successfully saved Tokens in DB');
+  // }, (e) => {
+  //   console.log('Error Saving tokens in DB:' , e);
+  // })
 
   res.send('<p>Authenticated by Google ! </p>');
 });
