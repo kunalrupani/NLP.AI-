@@ -88,7 +88,7 @@ router.get('/login', function (req, res) {
   savetokens.save().then(()=>{
     console.log('Successfully saved Tokens in DB');
   }, (e) => {
-    console.log('Error Saving tokens in DB');
+    console.log('Error Saving tokens in DB:' , e);
   })
 
   res.send('<p>Authenticated by Google ! </p>');
