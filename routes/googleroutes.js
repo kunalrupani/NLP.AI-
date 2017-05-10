@@ -72,6 +72,7 @@ router.get('/login', function (req, res) {
   }
   accessToken = tokens.access_token;
   console.log('ACCESS TOKEN', accessToken);
+  res.send('<p>Authenticated by Google ! </p>');
 });
   }
 });
