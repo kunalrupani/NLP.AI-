@@ -2,9 +2,7 @@ var mongoose = require('mongoose');
 
 var Tokens = mongoose.model('Tokens', {
   access_token: {
-    type: String,
-    required: true,
-    minlength: 1
+    type: String
   },
 id_token: {
     type: String
