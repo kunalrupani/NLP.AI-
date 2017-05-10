@@ -154,5 +154,22 @@ calendar.events.insert({
 
 });
 
+router.get('/listevents', function (req, res) {
+  console.log("#### I am in Google list events #####"); 
+  calendar.events.list({
+    auth: oauth2Client,
+    calendarId: 'primary'
+}, function(err, event) {
+  if (err) {
+    console.log('There was an error contacting the Calendar service: ' + err);
+    return;
+  }
+  console.log('Event created: %s', event.htmlLink);
+}
+
+);
+
+
+
 module.exports = router;
 
