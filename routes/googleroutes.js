@@ -158,13 +158,14 @@ router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
   calendar.events.list({
     auth: oauth2Client,
+    timeMin: (new Date()).toISOString(),
     calendarId: 'primary'
 }, function(err, events) {
   if (err) {
     console.log('There was an error contacting the Calendar service: ' + err);
     return;
   }
-  console.log('Events list ', events);
+  console.log('Events list ###### ', events);
 });
 
 });
