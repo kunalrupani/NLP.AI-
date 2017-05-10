@@ -6,6 +6,9 @@ const request = require('request');
 const google = require('googleapis');
 const googleAuth = require('google-auth-library');
 
+//MongooseDB for Token store
+var {mongoose} = require('../db/mongoose');
+var {Tokens} = require('../db/mtokens');
 
 var accessToken;
 var calendar = google.calendar('v3');
@@ -74,41 +77,26 @@ router.get('/login', function (req, res) {
   // refreshToken = tokens.refresh_token;
   // console.log('ACCESS TOKEN', accessToken);
   // console.log('REFRESH TOKEN', refreshToken);
+  
+  var savetokens = new Tokens ({
+    access_type: tokens.access_token,
+    id_token: tokens.id_token,
+    refresh_token: tokens.refresh.token,
+    expiry_date: tokens.expiry_date
+  }
+  );
+  savetokens.save().then(()=>{
+    console.log('Successfully saved Tokens in DB');
+  }, (e) => {
+    console.log('Error Saving tokens in DB');
+  })
+
   res.send('<p>Authenticated by Google ! </p>');
 });
   }
 });
 
-
-
-
-/*List calendars manual api request. */
-// router.get('/listcalendars', function (req, res) {
-//   console.log("#### I am in Google list calendars #####"); 
-  
-//   var headers = {
-//     // Accept: 'application/json',
-//      Authorization: 'Bearer ' + accessToken
-//   };
-
-  
-//     var options = {
-//         uri: "https://www.googleapis.com/calendar/v3/calendars/kunalrupani@gmail.com/events?key=739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com",  
-//         method: 'GET',
-//         headers: headers
-//     };
-
-//     request(options, function (error, response, body) {
-    
-//     console.log("Hello calendar ***********************");
-//     console.log('error:', error); // Print the error if one occurred
-//     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//     console.log('body:', body); // Print the HTML for the Google homepage.
-//     });
-
-
-// });
-
+// Create Events
 
 router.get('/createevent', function (req, res) {
 
@@ -153,6 +141,10 @@ calendar.events.insert({
 });
 
 });
+
+// List 3 upcoming events
+
+
 
 router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
