@@ -81,7 +81,7 @@ router.get('/login', function (req, res) {
   var savetokens = new Tokens ({
     access_type: tokens.access_token,
     id_token: tokens.id_token,
-    refresh_token: tokens.refresh.token,
+    refresh_token: tokens.refresh_token,
     expiry_date: tokens.expiry_date
   }
   );
