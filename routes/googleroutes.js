@@ -63,7 +63,7 @@ router.get('/login', function (req, res) {
   if (authcode == null){
     res.redirect('/loginfirst');
   }
-
+  else {
   oauth2Client.getToken(authcode, function (err, tokens) {
     console.log('Received Access Token $$$$$$$$$$$$$$$$$$$$$$$$', tokens);
   // Now tokens contains an access_token and an optional refresh_token. Save them.
@@ -73,7 +73,7 @@ router.get('/login', function (req, res) {
   accessToken = tokens.access_token;
   console.log('ACCESS TOKEN', accessToken);
 });
-  
+  }
 });
 
 
