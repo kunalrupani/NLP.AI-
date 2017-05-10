@@ -61,7 +61,7 @@ router.get('/login', function (req, res) {
   authcode= req.query.code;
 
   if (authcode == null){
-    res.redirect('/loginfirst');
+    res.redirect('/google/loginfirst');
   }
   else {
   oauth2Client.getToken(authcode, function (err, tokens) {
