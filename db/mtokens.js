@@ -1,21 +1,10 @@
 var mongoose = require('mongoose');
 
-var Tokens = mongoose.model('Tokens', {
-  access_token: {
-    type: String
-  },
-id_token: {
-    type: String
-  },
-refresh_token: {
-    type: String
-  },
-token_type: {
-    type: String
-  },
-expiry_date: {
-    type: String
-  }
+var Oauth2Client = mongoose.model('Tokens', {
 
+  oauth2_client:  {
+      type: Object
+  }
+  
 });
-module.exports = {Tokens};
+module.exports = {OAuth2Client};
