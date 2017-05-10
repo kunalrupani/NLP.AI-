@@ -159,12 +159,12 @@ router.get('/listevents', function (req, res) {
   calendar.events.list({
     auth: oauth2Client,
     calendarId: 'primary'
-}, function(err, event) {
+}, function(err, events) {
   if (err) {
     console.log('There was an error contacting the Calendar service: ' + err);
     return;
   }
-  console.log('Event created: %s', event.htmlLink);
+  console.log('Events list ', events);
 });
 
 });
