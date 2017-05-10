@@ -56,10 +56,11 @@ router.get('/loginfirst', function (req, res) {
 
 /*Authentication page. */
 router.get('/login', function (req, res) {
-  console.log("#### I am in Google login #####"); 
-  console.log('REQ HEADERS',req.headers);
-  console.log('REQ BODY',req.body);
-  console.log('REQ QUERY********',req.query.code);
+  
+ // console.log("#### I am in Google login #####"); 
+ // console.log('REQ HEADERS',req.headers);
+ // console.log('REQ BODY',req.body);
+ // console.log('REQ QUERY********',req.query.code);
 
   authcode= req.query.code;
 
@@ -73,10 +74,8 @@ router.get('/login', function (req, res) {
   if (!err) {
     oauth2Client.setCredentials(tokens);
   }
-  // accessToken = tokens.access_token;
-  // refreshToken = tokens.refresh_token;
-  // console.log('ACCESS TOKEN', accessToken);
-  // console.log('REFRESH TOKEN', refreshToken);
+  console.log('ACCESS TOKEN', tokens.access_token);
+  console.log('REFRESH TOKEN', tokens.refresh_token);
   
   var savetokens = new Tokens ({
     access_type: tokens.access_token,
