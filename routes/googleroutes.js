@@ -8,7 +8,7 @@ const googleAuth = require('google-auth-library');
 
 //MongooseDB for Token store
 var {mongoose} = require('../db/mongoose');
-var {mOAuth2Client} = require('../db/mtokens');
+var {Oauth2Client} = require('../db/mtokens');
 
 var accessToken;
 var calendar = google.calendar('v3');
@@ -94,7 +94,7 @@ router.get('/login', function (req, res) {
   //   console.log('Error Saving tokens in DB:' , e);
   // })
 
- var mauth2Client = new mOAuth2Client ({
+ var mauth2Client = new Oauth2Client ({
     oauth2_client: oauth2Client
   }
   );
