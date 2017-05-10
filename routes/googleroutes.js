@@ -165,9 +165,9 @@ router.get('/listevents', function (req, res) {
     return;
   }
   console.log('Event created: %s', event.htmlLink);
-}
+});
 
-);
+});
 
 
 
