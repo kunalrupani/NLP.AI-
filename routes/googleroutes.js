@@ -39,7 +39,7 @@ router.get('/loginfirst', function (req, res) {
     var url = oauth2Client.generateAuthUrl({
     // 'online' (default) or 'offline' (gets refresh_token)
     access_type: 'offline',
-
+    approval_prompt=force,
     // If you only need one scope you can pass it as a string
     scope: scopes,
 
@@ -73,7 +73,7 @@ router.get('/login', function (req, res) {
   accessToken = tokens.access_token;
   refreshToken = tokens.refresh_token;
   console.log('ACCESS TOKEN', accessToken);
-  console.log('ACCESS TOKEN', refreshToken);
+  console.log('REFRESH TOKEN', refreshToken);
   res.send('<p>Authenticated by Google ! </p>');
 });
   }
