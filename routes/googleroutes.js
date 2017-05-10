@@ -71,7 +71,9 @@ router.get('/login', function (req, res) {
     oauth2Client.setCredentials(tokens);
   }
   accessToken = tokens.access_token;
+  refreshToken = tokens.refresh_token;
   console.log('ACCESS TOKEN', accessToken);
+  console.log('ACCESS TOKEN', refreshToken);
   res.send('<p>Authenticated by Google ! </p>');
 });
   }
