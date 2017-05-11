@@ -139,16 +139,15 @@ calendar.events.insert({
 
 router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
-   var anyclient;
+   
    Oauth2Client.find({}, (err, oauth2clients)=>{
-    anyclient = oauth2clients[0]; 
-    console.log('oauth2clients object ********************************', anyclient.oauth2_client);
+    oauth2Client = oauth2clients[0].oauth2_client; 
+    console.log('oauth2clients object ********************************',oauth2Client );
    }
   );
 
   calendar.events.list({
-   // auth: oauth2Client,
-    auth: anyclient.oauth2_client,
+    auth: oauth2Client,
     timeMin: (new Date()).toISOString(),
     maxResults: 3,
     singleEvents: true,
