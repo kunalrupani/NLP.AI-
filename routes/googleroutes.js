@@ -38,7 +38,6 @@ router.get('/loginfirst', function (req, res) {
     'https://www.googleapis.com/auth/plus.me',
     'https://www.googleapis.com/auth/calendar'
     ];
-
     var url = oauth2Client.generateAuthUrl({
     // 'online' (default) or 'offline' (gets refresh_token)
     access_type: 'offline',
@@ -47,20 +46,12 @@ router.get('/loginfirst', function (req, res) {
     scope: scopes,
 
      });
- 
      console.log('Google URL******', url);
-
      res.redirect(url);
-
  });
 
 /*Authentication page. */
 router.get('/login', function (req, res) {
-  
- // console.log("#### I am in Google login #####"); 
- // console.log('REQ HEADERS',req.headers);
- // console.log('REQ BODY',req.body);
- // console.log('REQ QUERY********',req.query.code);
 
   authcode= req.query.code;
 
@@ -76,23 +67,6 @@ router.get('/login', function (req, res) {
     console.log(typeof(oauth2Client));
     console.log('KunalsRupani *********** oauth2Client:', oauth2Client);
 }
-
-
-  // console.log('ACCESS TOKEN', tokens.access_token);
-  // console.log('REFRESH TOKEN', tokens.refresh_token);
-  
-  // var savetokens = new Tokens ({
-  //   access_token: tokens.access_token,
-  //   id_token: tokens.id_token,
-  //   refresh_token: tokens.refresh_token,
-  //   expiry_date: tokens.expiry_date
-  // }
-  // );
-  // savetokens.save().then(()=>{
-  //   console.log('Successfully saved Tokens in DB');
-  // }, (e) => {
-  //   console.log('Error Saving tokens in DB:' , e);
-  // })
 
  var mauth2Client = new Oauth2Client ({
     oauth2_client: oauth2Client
@@ -165,15 +139,9 @@ calendar.events.insert({
 
 router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
-
-  var oauth2clientsarray;
-  var mauth2Client = new Oauth2Client ({
-    oauth2_client: oauth2Client
-   });
-
-   mauth2Client.find({}, (err, oauth2clients)=>{
+ 
+   Oauth2Client.find({}, (err, oauth2clients)=>{
     console.log('oauth2clients object', oauth2clients);
-
    }
   );
 
