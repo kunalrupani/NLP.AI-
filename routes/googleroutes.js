@@ -159,6 +159,7 @@ router.get('/listevents', function (req, res) {
    }
   );
    console.log('oauth2clients object FROM memory ********************************',oauth2Client );
+      console.log('oauth2clients object FROM memory TYPEOF ********************************',typeof(oauth2Client.transporter) );
   calendar.events.list({
     auth: oauth2Client1,
     timeMin: (new Date()).toISOString(),
