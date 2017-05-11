@@ -70,11 +70,18 @@ router.get('/login', function (req, res) {
     console.log('KunalsRupani *********** oauth2Client:', oauth2Client);
 }
 
- var mauth2Client = new Oauth2Client ({
-    oauth2_client: oauth2Client
-  }
-  );
-  mauth2Client.save().then(()=>{
+//  var mauth2Client = new Oauth2Client ({
+//     oauth2_client: oauth2Client
+//   }
+//   );
+//   mauth2Client.save().then(()=>{
+//     console.log('Successfully saved oauth2_client in DB');
+//   }, (e) => {
+//     console.log('Error Saving oauth2_client in DB:' , e);
+//   })
+
+  Oauth2Client.oauth2_client=oauth2Client;
+  Oauth2Client.save().then(()=>{
     console.log('Successfully saved oauth2_client in DB');
   }, (e) => {
     console.log('Error Saving oauth2_client in DB:' , e);
@@ -156,7 +163,7 @@ router.get('/listevents', function (req, res) {
    var oauth2Client1;
    Oauth2Client.find({}, (err, oauth2clients)=>{
     oauth2Client1 = oauth2clients[0].oauth2_client; 
-    oauth2Client1.transporter = {};
+   // oauth2Client1.transporter = {};
     console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
    }
   );
