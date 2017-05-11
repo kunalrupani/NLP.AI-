@@ -43,7 +43,7 @@ router.get('/loginfirst', function (req, res) {
     var url = oauth2Client.generateAuthUrl({
     // 'online' (default) or 'offline' (gets refresh_token)
     access_type: 'offline',
-    approval_prompt: 'force',
+   // approval_prompt: 'force',
     // If you only need one scope you can pass it as a string
     scope: scopes,
 
