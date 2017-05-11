@@ -171,7 +171,7 @@ var tmpoauth2Client = new auth.OAuth2(
     expiry_date: oauth2Client1.credentials.expiry_date
   };
 
-  tempauth2Client = oauth2Client.setCredentials(tempaccesstoken);
+  tmpoauth2Client.setCredentials(tempaccesstoken);
   oauth2Client1=tempauth2Client;
 
      console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
