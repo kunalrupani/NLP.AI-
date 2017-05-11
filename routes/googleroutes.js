@@ -142,7 +142,7 @@ router.get('/listevents', function (req, res) {
    var anyclient;
    Oauth2Client.find({}, (err, oauth2clients)=>{
     anyclient = oauth2clients[0]; 
-    console.log('oauth2clients object', anyclient);
+    console.log('oauth2clients object ********************************', anyclient.oauth2_client);
    }
   );
 
