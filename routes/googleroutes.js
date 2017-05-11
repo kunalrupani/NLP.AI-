@@ -157,6 +157,7 @@ router.get('/listevents', function (req, res) {
     oauth2Client1 = oauth2clients[0].oauth2_client; 
      var DefaultTransporter = {};
      oauth2Client1.transporter = DefaultTransporter;
+     oauth2Client1.setCredentials(oauth2Client.credentials);
      console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
    }
   );
