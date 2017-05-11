@@ -92,7 +92,7 @@ router.get('/createevent', function (req, res) {
 
 
 Oauth2Client.find({}, (err, oauth2clients)=>{
-    oauth2Client2 = oauth2clients[0].oauth2_client; 
+    var oauth2Client2 = oauth2clients[0].oauth2_client; 
     console.log('oauth2clients object ********************************',oauth2Client2 );
    }
   );
@@ -155,7 +155,7 @@ router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
    
    Oauth2Client.find({}, (err, oauth2clients)=>{
-    oauth2Client1 = oauth2clients[0].oauth2_client; 
+    var oauth2Client1 = oauth2clients[0].oauth2_client; 
     console.log('oauth2clients object ********************************',oauth2Client1 );
    }
   );
