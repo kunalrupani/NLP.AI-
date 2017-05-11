@@ -114,6 +114,9 @@ router.get('/login', function (req, res) {
 
 router.get('/createevent', function (req, res) {
 
+
+
+
 var event = {
   'summary': 'askRupaniBOT Test',
   'location': 'Lakebrook Court',
@@ -162,6 +165,18 @@ calendar.events.insert({
 
 router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
+
+  var oauth2clientsarray;
+  var mauth2Client = new Oauth2Client ({
+    oauth2_client: oauth2Client
+   });
+
+   mauth2Client.find({}, (err, oauth2clients)=>{
+    console.log('oauth2clients object', oauth2clients);
+
+   }
+  );
+
   calendar.events.list({
     auth: oauth2Client,
     timeMin: (new Date()).toISOString(),
