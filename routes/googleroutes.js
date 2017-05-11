@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 
+var datetime = require('node-datetime');
+
 //Google SDKs
 const google = require('googleapis');
 const googleAuth = require('google-auth-library');
@@ -89,6 +91,17 @@ router.get('/login', function (req, res) {
 router.get('/createevent', function (req, res) {
 
 
+Oauth2Client.find({}, (err, oauth2clients)=>{
+    oauth2Client = oauth2clients[0].oauth2_client; 
+    console.log('oauth2clients object ********************************',oauth2Client );
+   }
+  );
+
+var startTime = '2017-05-11 11:00:00';
+var startDateTime = datetime.create(startTime);
+
+var endTime = '2017-05-11 12:00:00';
+var endDateTime = datetime.create(endTime);
 
 
 var event = {
@@ -96,11 +109,11 @@ var event = {
   'location': 'Lakebrook Court',
   'description': 'askRupaniBot experimentation',
   'start': {
-    'dateTime': '2017-05-10T017:00:00-11:00',
+    'dateTime': startDateTime,
     'timeZone': 'America/Los_Angeles',
   },
   'end': {
-    'dateTime': '2017-05-10T18:00:00-12:00',
+    'dateTime': endDateTime,
     'timeZone': 'America/Los_Angeles',
   },
   'recurrence': [
