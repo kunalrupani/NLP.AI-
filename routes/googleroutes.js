@@ -141,7 +141,9 @@ router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
  
    Oauth2Client.find({}, (err, oauth2clients)=>{
-    console.log('oauth2clients object', oauth2clients);
+
+    var anyclient = oauth2clients[0]; 
+    console.log('oauth2clients object', anyclient);
    }
   );
 
