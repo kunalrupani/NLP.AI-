@@ -158,28 +158,16 @@ router.get('/listevents', function (req, res) {
    Oauth2Client.find({}, (err, oauth2clients)=>{
     oauth2Client1 = oauth2clients[0].oauth2_client; 
 
-var tmpoauth2Client = new auth.OAuth2(
-  '739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com',
-  'M9cXrkBGQ-JujTgyG2qOAAAe',
-  'https://pointylabs.herokuapp.com/google/login'
-);
-
- var tempaccesstoken = {
-    access_token : oauth2Client1.credentials.access_token,
-    id_token :oauth2Client1.credentials.id_token,
-    refresh_token : oauth2Client1.credentials.refresh_token,
-    expiry_date: oauth2Client1.credentials.expiry_date
-  };
-
-  tmpoauth2Client.setCredentials(tempaccesstoken);
-  oauth2Client1=tmpoauth2Client;
-
      console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
    }
   );
+
+   if (oauth2Client1===oauth2Client) {console.log ("SAMEEEEEEEEEEEE********************************")}
+   else{
+     console.log("DIFFERENT**********************************************************");
+   }
    console.log('oauth2clients object FROM memory ********************************',oauth2Client );
 
-//   oauth2Client1=oauth2Client;
    calendar.events.list({
     auth: oauth2Client1,
     timeMin: (new Date()).toISOString(),
