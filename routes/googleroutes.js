@@ -74,6 +74,8 @@ router.get('/login', function (req, res) {
   }
   );
 
+ 
+
   mauth2Client.save().then(()=>{
     console.log('Successfully saved oauth2_client in DB');
   }, (e) => {
@@ -155,6 +157,23 @@ router.get('/listevents', function (req, res) {
    var oauth2Client1;
    Oauth2Client.find({}, (err, oauth2clients)=>{
     oauth2Client1 = oauth2clients[0].oauth2_client; 
+
+var tmpoauth2Client = new auth.OAuth2(
+  '739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com',
+  'M9cXrkBGQ-JujTgyG2qOAAAe',
+  'https://pointylabs.herokuapp.com/google/login'
+);
+
+ var tempaccesstoken = {
+    access_token : oauth2Client1.credentials.access_token,
+    id_token :oauth2Client1.credentials.id_token,
+    refresh_token : oauth2Client1.credentials.refresh_token,
+    expiry_date: oauth2Client1.credentials.expiry_date
+  };
+
+  tempauth2Client = oauth2Client.setCredentials(temptoken);
+  oauth2Client1=tempauth2Client;
+  
      console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
    }
   );
