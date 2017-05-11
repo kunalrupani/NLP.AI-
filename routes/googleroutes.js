@@ -90,9 +90,9 @@ router.get('/login', function (req, res) {
 
 router.get('/createevent', function (req, res) {
 
-
+var oauth2Client2;
 Oauth2Client.find({}, (err, oauth2clients)=>{
-    var oauth2Client2 = oauth2clients[0].oauth2_client; 
+    oauth2Client2 = oauth2clients[0].oauth2_client; 
     console.log('oauth2clients object ********************************',oauth2Client2 );
    }
   );
@@ -153,9 +153,9 @@ calendar.events.insert({
 
 router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
-   
+   var oauth2Client1;
    Oauth2Client.find({}, (err, oauth2clients)=>{
-    var oauth2Client1 = oauth2clients[0].oauth2_client; 
+    oauth2Client1 = oauth2clients[0].oauth2_client; 
     console.log('oauth2clients object ********************************',oauth2Client1 );
    }
   );
