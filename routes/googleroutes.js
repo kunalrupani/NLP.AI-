@@ -161,7 +161,7 @@ router.get('/listevents', function (req, res) {
   );
 
   calendar.events.list({
-    auth: oauth2Client1,
+    auth: oauth2Client,
     timeMin: (new Date()).toISOString(),
     maxResults: 3,
     singleEvents: true,
