@@ -153,14 +153,15 @@ router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
    var oauth2Client1;
    Oauth2Client.find({}, (err, oauth2clients)=>{
-    oauth2Client1 = oauth2clients[0]; 
+    oauth2Client1 = oauth2clients[0].oauth2_client; 
      var DefaultTransporter = {};
      console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
+      console.log('oauth2clients object FROM DB TYPEOF ********************************',typeof(oauth2Client1) );
    }
   );
    console.log('oauth2clients object FROM memory ********************************',oauth2Client );
-      //console.log('oauth2clients object FROM memory TYPEOF ********************************',typeof(oauth2Client.transporter) );
-  calendar.events.list({
+   console.log('oauth2clients object FROM DB TYPEOF ********************************',typeof(oauth2Client) );
+   calendar.events.list({
     auth: oauth2Client1,
     timeMin: (new Date()).toISOString(),
     maxResults: 3,
