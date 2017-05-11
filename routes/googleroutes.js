@@ -92,8 +92,8 @@ router.get('/createevent', function (req, res) {
 
 
 Oauth2Client.find({}, (err, oauth2clients)=>{
-    oauth2Client = oauth2clients[0].oauth2_client; 
-    console.log('oauth2clients object ********************************',oauth2Client );
+    oauth2Client2 = oauth2clients[0].oauth2_client; 
+    console.log('oauth2clients object ********************************',oauth2Client2 );
    }
   );
 
@@ -134,7 +134,7 @@ var event = {
 
 
 calendar.events.insert({
-  auth: oauth2Client,
+  auth: oauth2Client2,
   calendarId: 'primary',
   resource: event,
 }, function(err, event) {
@@ -155,13 +155,13 @@ router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
    
    Oauth2Client.find({}, (err, oauth2clients)=>{
-    oauth2Client = oauth2clients[0].oauth2_client; 
-    console.log('oauth2clients object ********************************',oauth2Client );
+    oauth2Client1 = oauth2clients[0].oauth2_client; 
+    console.log('oauth2clients object ********************************',oauth2Client1 );
    }
   );
 
   calendar.events.list({
-    auth: oauth2Client,
+    auth: oauth2Client1,
     timeMin: (new Date()).toISOString(),
     maxResults: 3,
     singleEvents: true,
