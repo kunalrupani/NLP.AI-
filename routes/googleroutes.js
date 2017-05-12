@@ -23,8 +23,6 @@ var oauth2Client = new auth.OAuth2(
 );
 
 
-
-
 /* GET home page. */
 router.get('/', function (req, res) {
   // check for token
@@ -88,18 +86,16 @@ router.get('/createevent', function (req, res) {
 
 console.log("#### I am in Google create event  #####"); 
 
-var startTime = new Date('2017-05-13 13:00:00');
-var startDateTime = datetime.create(startTime);
+var startTime = new Date('2017-05-13 1:00:00');
 
-var endTime = new Date('2017-05-13 14:00:00');
-var endDateTime = datetime.create(endTime);
+var endTime = new Date('2017-05-13 2:00:00');
 
 console.log('^^^^^^^ startDateTime =', startDateTime, typeof(startDateTime));
 console.log('^^^^^^^ endDateTime =', startDateTime, typeof(endDateTime));
 
 var event = {
-  'summary': 'askRupaniBOT Test',
-  'location': 'Lakebrook Court',
+  'summary': 'Meeting Setup with Kunal',
+  'location': 'San Jose',
   'description': 'askRupaniBot experimentation',
   'start': {
     'dateTime': startTime,
