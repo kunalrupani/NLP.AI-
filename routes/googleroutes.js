@@ -86,7 +86,7 @@ router.get('/login', function (req, res) {
 
 router.get('/createevent', function (req, res) {
 
-  console.log("#### I am in Google create event  #####"); 
+console.log("#### I am in Google create event  #####"); 
 
 var startTime = '2017-05-12 13:00:00';
 var startDateTime = datetime.create(startTime);
@@ -134,7 +134,7 @@ var event = {
   Oauth2Client.find({}, (err, oauth2clients)=>{
     oauth2Client1.setCredentials(oauth2clients[0].credentials);    
     calendar.events.insert({
-    auth: oauth2Client1,
+    auth: oauth2Client,
     calendarId: 'primary',
     resource: event,
     }, function(err, event) {
