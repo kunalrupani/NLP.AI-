@@ -43,7 +43,7 @@ router.get('/loginfirst', function (req, res) {
     var url = oauth2Client.generateAuthUrl({
     // 'online' (default) or 'offline' (gets refresh_token)
     access_type: 'offline',
-    approval_prompt: 'force',
+    //approval_prompt: 'force',
     // If you only need one scope you can pass it as a string
     scope: scopes,
 
@@ -158,11 +158,7 @@ router.get('/listevents', function (req, res) {
  //  console.log('oauth2clients object FROM memory ********************************',oauth2Client );
 
    Oauth2Client.find({}, (err, oauth2clients)=>{
-   console.log('oauth2clients object FROM just the creds ********************************',oauth2clients[0].credentials);
     oauth2Client1.setCredentials(oauth2clients[0].credentials);    
-
-    console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
-
     calendar.events.list({
     auth: oauth2Client1,
     timeMin: (new Date()).toISOString(),
