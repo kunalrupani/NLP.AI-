@@ -15,7 +15,6 @@ var Oauth2ClientSchema = mongoose.Schema( {
         refresh_token: String,
         expiry_date: Number
       }
-
     });
 
 Oauth2ClientSchema.methods.toJSON = function () {

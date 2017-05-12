@@ -158,6 +158,8 @@ router.get('/listevents', function (req, res) {
      console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
    }
   );
+    oauth2Client.credentials = oauth2Client1.credentials;
+
 
    if (oauth2Client1===oauth2Client) {console.log ("SAMEEEEEEEEEEEE********************************")}
    else{
@@ -166,7 +168,7 @@ router.get('/listevents', function (req, res) {
    console.log('oauth2clients object FROM memory ********************************',oauth2Client );
 
    calendar.events.list({
-    auth: oauth2Client1,
+    auth: oauth2Client,
     timeMin: (new Date()).toISOString(),
     maxResults: 3,
     singleEvents: true,
