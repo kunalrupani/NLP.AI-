@@ -86,19 +86,13 @@ router.get('/login', function (req, res) {
 
 router.get('/createevent', function (req, res) {
 
-var oauth2Client2;
-Oauth2Client.find({}, (err, oauth2clients)=>{
-    oauth2Client2 = oauth2clients[0].oauth2_client; 
-    console.log('oauth2clients object ********************************',oauth2Client2 );
-   }
-  );
+  console.log("#### I am in Google create event  #####"); 
 
-var startTime = '2017-05-11 11:00:00';
+var startTime = '2017-05-13 11:00:00';
 var startDateTime = datetime.create(startTime);
 
-var endTime = '2017-05-11 12:00:00';
+var endTime = '2017-05-13 12:00:00';
 var endDateTime = datetime.create(endTime);
-
 
 var event = {
   'summary': 'askRupaniBOT Test',
@@ -128,18 +122,32 @@ var event = {
   },
 };
 
+  var oauth2Client1=new auth.OAuth2(
+  '739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com',
+  'M9cXrkBGQ-JujTgyG2qOAAAe',
+  'https://pointylabs.herokuapp.com/google/login'
+);
 
-calendar.events.insert({
-  auth: oauth2Client2,
-  calendarId: 'primary',
-  resource: event,
-}, function(err, event) {
-  if (err) {
-    console.log('There was an error contacting the Calendar service: ' + err);
-    return;
-  }
-  console.log('Event created: %s', event.htmlLink);
+  Oauth2Client.find({}, (err, oauth2clients)=>{
+    oauth2Client1.setCredentials(oauth2clients[0].credentials);    
+    calendar.events.insert({
+    auth: oauth2Client1,
+    calendarId: 'primary',
+    resource: event,
+    }, function(err, event) {
+    if (err) {
+     console.log('There was an error contacting the Calendar service: ' + err);
+     return;
+    }
+    console.log('Event created: %s', event.htmlLink);
 });
+
+
+
+   }
+  );
+
+
 
 });
 
@@ -155,8 +163,6 @@ router.get('/listevents', function (req, res) {
   'M9cXrkBGQ-JujTgyG2qOAAAe',
   'https://pointylabs.herokuapp.com/google/login'
 );
- //  console.log('oauth2clients object FROM memory ********************************',oauth2Client );
-
    Oauth2Client.find({}, (err, oauth2clients)=>{
     oauth2Client1.setCredentials(oauth2clients[0].credentials);    
     calendar.events.list({
@@ -175,10 +181,6 @@ router.get('/listevents', function (req, res) {
      });
    }
   );
-
-
-
-
 });
 
 
