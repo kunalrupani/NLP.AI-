@@ -7,17 +7,17 @@ var Oauth2ClientSchema = mongoose.Schema( {
       
   OAuth2Client: {
       transporter: {
-        USER_AGENT: String
+        type: String
       },
       clientID_ : String,
       clientSecret_ : String,
       redirectUri_ : String,
-      opts: {},
+      opts: {type: String},
       credentials: {
         access_token: String,
         id_token: String,
         refresh_token: String,
-        expiry_date: Date
+        expiry_date: Number
       }
 
     }
@@ -26,12 +26,12 @@ var Oauth2ClientSchema = mongoose.Schema( {
   
 });
 
-// Oauth2ClientSchema.methods.toJSON = function () {
-//   var oauthinfo = this;
-//   var oauthinfoObject = oauthinfo.toObject();
-//   return oauthinfoObject;
+Oauth2ClientSchema.methods.toJSON = function () {
+  var oauthinfo = this;
+  var oauthinfoObject = oauthinfo.toObject();
+  return oauthinfoObject;
 
-// };
+};
 
 
 var Oauth2Client = mongoose.model('Oauth2Client', Oauth2ClientSchema);
