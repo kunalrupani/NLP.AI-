@@ -88,10 +88,10 @@ router.get('/createevent', function (req, res) {
 
   console.log("#### I am in Google create event  #####"); 
 
-var startTime = '2017-05-13 11:00:00';
+var startTime = '2017-05-12 13:00:00';
 var startDateTime = datetime.create(startTime);
 
-var endTime = '2017-05-13 12:00:00';
+var endTime = '2017-05-12 14:00:00';
 var endDateTime = datetime.create(endTime);
 
 console.log('^^^^^^^ startDateTime =', startDateTime, typeof(startDateTime));
