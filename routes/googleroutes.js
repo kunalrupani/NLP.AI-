@@ -156,7 +156,7 @@ router.get('/listevents', function (req, res) {
 
    Oauth2Client.find({}, (err, oauth2clients)=>{
 
-    oauth2Client1 = oauth2clients[0].oauth2_client; 
+    oauth2Client1 = JSON.parse(oauth2clients[0]); 
    
      console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
    }
@@ -169,7 +169,7 @@ router.get('/listevents', function (req, res) {
    console.log('oauth2clients object FROM memory ********************************',oauth2Client );
 
    calendar.events.list({
-    auth: oauth2Client1,
+    auth: oauth2Client1.oauth2_client,
     timeMin: (new Date()).toISOString(),
     maxResults: 3,
     singleEvents: true,
