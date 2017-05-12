@@ -160,25 +160,28 @@ router.get('/listevents', function (req, res) {
    Oauth2Client.find({}, (err, oauth2clients)=>{
    console.log('oauth2clients object FROM just the creds ********************************',oauth2clients[0].credentials);
     oauth2Client1.setCredentials(oauth2clients[0].credentials);    
-   }
-  );
 
-   console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
+    console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
 
-   calendar.events.list({
+    calendar.events.list({
     auth: oauth2Client1,
     timeMin: (new Date()).toISOString(),
     maxResults: 3,
     singleEvents: true,
     orderBy: 'startTime',
     calendarId: 'primary'
-}, function(err, events) {
-  if (err) {
-    console.log('There was an error contacting the Calendar service: ' + err);
-    return;
-  }
-  console.log('Events list ###### ', events);
-});
+    }, function(err, events) {
+    if (err) {
+     console.log('There was an error contacting the Calendar service: ' + err);
+     return;
+    }
+    console.log('Events list ###### ', events);
+     });
+   }
+  );
+
+
+
 
 });
 
