@@ -134,7 +134,7 @@ var event = {
   Oauth2Client.find({}, (err, oauth2clients)=>{
     oauth2Client1.setCredentials(oauth2clients[0].credentials);    
     calendar.events.insert({
-    auth: oauth2Client,
+    auth: oauth2Client1,
     calendarId: 'primary',
     resource: event,
     }, function(err, event) {
