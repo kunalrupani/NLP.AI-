@@ -88,11 +88,11 @@ router.get('/createevent', function (req, res) {
 
 console.log("#### I am in Google create event  #####"); 
 
-var startTime = '2017-05-12 13:00:00';
-var startDateTime = datetime.create(startTime);
+var startTime = '2017-05-13 13:00:00';
+var startDateTime = datetime.create(startTime).toISOString;
 
-var endTime = '2017-05-12 14:00:00';
-var endDateTime = datetime.create(endTime);
+var endTime = '2017-05-13 14:00:00';
+var endDateTime = datetime.create(endTime).toISOString;
 
 console.log('^^^^^^^ startDateTime =', startDateTime, typeof(startDateTime));
 console.log('^^^^^^^ endDateTime =', startDateTime, typeof(endDateTime));
@@ -102,11 +102,11 @@ var event = {
   'location': 'Lakebrook Court',
   'description': 'askRupaniBot experimentation',
   'start': {
-    'dateTime': '2015-05-13T09:00:00-07:00',
+    'dateTime': startDateTime,
     'timeZone': 'America/Los_Angeles',
   },
   'end': {
-    'dateTime': '2015-05-13T17:00:00-07:00',
+    'dateTime': endDateTime,
     'timeZone': 'America/Los_Angeles',
   },
   'recurrence': [
