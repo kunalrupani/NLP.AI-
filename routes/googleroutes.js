@@ -102,11 +102,11 @@ var event = {
   'location': 'Lakebrook Court',
   'description': 'askRupaniBot experimentation',
   'start': {
-    'dateTime': startDateTime,
+    'dateTime': startTime,
     'timeZone': 'America/Los_Angeles',
   },
   'end': {
-    'dateTime': endDateTime,
+    'dateTime': endTime,
     'timeZone': 'America/Los_Angeles',
   },
   'recurrence': [
