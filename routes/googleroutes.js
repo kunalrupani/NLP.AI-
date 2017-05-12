@@ -109,7 +109,6 @@ var event = {
     'RRULE:FREQ=DAILY;COUNT=1'
   ],
   'attendees': [
-    {'email': 'kunal.rupani@oracle.com'},
     {'email': 'rupanikunal@hotmail.com'},
   ],
   'reminders': {
@@ -140,16 +139,11 @@ var event = {
      return;
     }
     console.log('Event created: %s', event.htmlLink);
-});
-
-
-
-   }
-  );
-
-
-
-});
+   });
+  }
+);
+}
+);
 
 // List 3 upcoming events
 
@@ -182,8 +176,6 @@ router.get('/listevents', function (req, res) {
    }
   );
 });
-
-
 
 module.exports = router;
 
