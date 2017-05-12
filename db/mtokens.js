@@ -2,10 +2,8 @@ var mongoose = require('mongoose');
 
 
 var Oauth2ClientSchema = mongoose.Schema( {
-
-  oauth2_client:  {
-      
-  OAuth2Client: {
+    
+  oauth2_client: {
       transporter: {
         type: String
       },
@@ -22,9 +20,7 @@ var Oauth2ClientSchema = mongoose.Schema( {
 
     }
 
-  }
-  
-});
+  });
 
 Oauth2ClientSchema.methods.toJSON = function () {
   var oauthinfo = this;
