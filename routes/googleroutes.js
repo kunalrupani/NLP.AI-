@@ -90,8 +90,8 @@ var startTime = new Date('2017-05-13 1:00:00');
 
 var endTime = new Date('2017-05-13 2:00:00');
 
-console.log('^^^^^^^ startDateTime =', startDateTime, typeof(startTime));
-console.log('^^^^^^^ endDateTime =', startDateTime, typeof(endTime));
+console.log('^^^^^^^ startDateTime =', startTime, typeof(startTime));
+console.log('^^^^^^^ endDateTime =', endTime, typeof(endTime));
 
 var event = {
   'summary': 'Meeting Setup with Kunal',
