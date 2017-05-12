@@ -86,9 +86,9 @@ router.get('/createevent', function (req, res) {
 
 console.log("#### I am in Google create event  #####"); 
 
-var startTime = new Date('2017-05-13 1:00:00 GMT-0700');
+var startTime = new Date('2017-05-13 16:00:00 GMT-0700');
 
-var endTime = new Date('2017-05-13 2:00:00 GMT-0700');
+var endTime = new Date('2017-05-13 17:00:00 GMT-0700');
 
 console.log('^^^^^^^ startDateTime =', startTime);
 console.log('^^^^^^^ endDateTime =', endTime);
