@@ -158,7 +158,7 @@ router.get('/listevents', function (req, res) {
  //  console.log('oauth2clients object FROM memory ********************************',oauth2Client );
 
    Oauth2Client.find({}, (err, oauth2clients)=>{
-
+   console.log('oauth2clients object FROM just the creds ********************************',oauth2clients[0].credentials);
     oauth2Client1.setCredentials(oauth2clients[0].credentials);    
    }
   );
