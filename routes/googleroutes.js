@@ -86,12 +86,12 @@ router.get('/createevent', function (req, res) {
 
 console.log("#### I am in Google create event  #####"); 
 
-var startTime = new Date('2017-05-13 1:00:00');
+var startTime = new Date('2017-05-13 1:00:00 GMT-0700');
 
-var endTime = new Date('2017-05-13 2:00:00');
+var endTime = new Date('2017-05-13 2:00:00 GMT-0700');
 
-console.log('^^^^^^^ startDateTime =', startTime, typeof(startTime));
-console.log('^^^^^^^ endDateTime =', endTime, typeof(endTime));
+console.log('^^^^^^^ startDateTime =', startTime));
+console.log('^^^^^^^ endDateTime =', endTime);
 
 var event = {
   'summary': 'Meeting Setup with Kunal',
@@ -132,6 +132,7 @@ var event = {
     calendar.events.insert({
     auth: oauth2Client1,
     calendarId: 'primary',
+    sendNotifications: true,
     resource: event,
     }, function(err, event) {
     if (err) {
