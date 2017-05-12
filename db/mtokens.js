@@ -26,12 +26,12 @@ var Oauth2ClientSchema = mongoose.Schema( {
   
 });
 
-Oauth2ClientSchema.methods.toJSON = function () {
-  var oauthinfo = this;
-  var oauthinfoObject = oauthinfo.toObject();
-  return oauthinfoObject;
+// Oauth2ClientSchema.methods.toJSON = function () {
+//   var oauthinfo = this;
+//   var oauthinfoObject = oauthinfo.toObject();
+//   return oauthinfoObject;
 
-};
+// };
 
 
 var Oauth2Client = mongoose.model('Oauth2Client', Oauth2ClientSchema);

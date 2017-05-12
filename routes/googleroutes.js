@@ -70,7 +70,7 @@ router.get('/login', function (req, res) {
     console.log('KunalsRupani *********** oauth2Client:', oauth2Client);
 }
  var mauth2Client = new Oauth2Client ({
-    oauth2_client: oauth2Client
+    oauth2_client: oauth2Client.Oauth2Client
   }
   );
 
