@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+const _ = require('lodash');
 
 var Oauth2ClientSchema = mongoose.Schema( {
       transporter: {
@@ -21,7 +21,8 @@ var Oauth2ClientSchema = mongoose.Schema( {
 Oauth2ClientSchema.methods.toJSON = function () {
   var oauthinfo = this;
   var oauthinfoObject = oauthinfo.toObject();
-  return oauthinfoObject;
+
+  return _.pick(oauthinfoObject, ['transporter', 'clientID_', 'redirectUri_', 'clientSecret_', ' opts', 'credentials']);
 
 };
 
