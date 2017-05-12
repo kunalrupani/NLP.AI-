@@ -90,7 +90,7 @@ var startTime = new Date('2017-05-13 1:00:00 GMT-0700');
 
 var endTime = new Date('2017-05-13 2:00:00 GMT-0700');
 
-console.log('^^^^^^^ startDateTime =', startTime));
+console.log('^^^^^^^ startDateTime =', startTime);
 console.log('^^^^^^^ endDateTime =', endTime);
 
 var event = {
