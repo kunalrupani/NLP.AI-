@@ -1,9 +1,13 @@
 var mongoose = require('mongoose');
+const googleAuth = require('google-auth-library');
+
+var auth = new googleAuth();
+var oauth2Client = new auth.OAuth2();
 
 var Oauth2ClientSchema = mongoose.Schema( {
 
   oauth2_client:  {
-      type: Object
+      type: oauth2Client
   }
   
 });

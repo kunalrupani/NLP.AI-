@@ -74,8 +74,6 @@ router.get('/login', function (req, res) {
   }
   );
 
- 
-
   mauth2Client.save().then(()=>{
     console.log('Successfully saved oauth2_client in DB');
   }, (e) => {
