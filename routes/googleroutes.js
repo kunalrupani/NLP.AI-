@@ -149,19 +149,19 @@ calendar.events.insert({
 
 router.get('/listevents', function (req, res) {
   console.log("#### I am in Google list events #####"); 
-  
+
    var oauth2Client1=new auth.OAuth2(
   '739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com',
   'M9cXrkBGQ-JujTgyG2qOAAAe',
   'https://pointylabs.herokuapp.com/google/login'
 );
-   console.log('oauth2clients object FROM memory ********************************',oauth2Client );
+ //  console.log('oauth2clients object FROM memory ********************************',oauth2Client );
 
    Oauth2Client.find({}, (err, oauth2clients)=>{
 
     oauth2Client1 .setCredentials(oauth2clients[0].credentials); 
    
-     console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
+   //  console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
    }
   );
 
