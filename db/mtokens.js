@@ -2,8 +2,6 @@ var mongoose = require('mongoose');
 
 
 var Oauth2ClientSchema = mongoose.Schema( {
-    
-  oauth2_client: {
       transporter: {
         type: String
       },
@@ -18,9 +16,7 @@ var Oauth2ClientSchema = mongoose.Schema( {
         expiry_date: Number
       }
 
-    }
-
-  });
+    });
 
 Oauth2ClientSchema.methods.toJSON = function () {
   var oauthinfo = this;
