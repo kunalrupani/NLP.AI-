@@ -5,7 +5,7 @@ var Oauth2ClientSchema = mongoose.Schema( {
 
   oauth2_client:  {
       
-   // OAuth2Client: {
+  OAuth2Client: {
       transporter: {
         USER_AGENT: String
       },
@@ -20,7 +20,7 @@ var Oauth2ClientSchema = mongoose.Schema( {
         expiry_date: Date
       }
 
-    //}
+    }
 
   }
   
