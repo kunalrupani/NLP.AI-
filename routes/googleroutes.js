@@ -94,6 +94,9 @@ var startDateTime = datetime.create(startTime);
 var endTime = '2017-05-13 12:00:00';
 var endDateTime = datetime.create(endTime);
 
+console.log('^^^^^^^ startDateTime =', startDateTime, typeof(startDateTime));
+console.log('^^^^^^^ endDateTime =', startDateTime, typeof(endDateTime));
+
 var event = {
   'summary': 'askRupaniBOT Test',
   'location': 'Lakebrook Court',
