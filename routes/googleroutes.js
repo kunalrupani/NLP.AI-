@@ -158,7 +158,7 @@ router.get('/listevents', function (req, res) {
      console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
    }
   );
-    oauth2Client.credentials = oauth2Client1.credentials;
+    oauth2Client.Oauth2Client.credentials = oauth2Client1.credentials;
 
 
    if (oauth2Client1===oauth2Client) {console.log ("SAMEEEEEEEEEEEE********************************")}
