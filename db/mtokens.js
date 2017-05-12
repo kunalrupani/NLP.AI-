@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 
 var Oauth2ClientSchema = mongoose.Schema( {
       transporter: {
-        type: String
+        DefaultTransporter: {}
       },
       clientID_ : String,
       clientSecret_ : String,
       redirectUri_ : String,
-      opts: {type: String},
+      opts: {},
       credentials: {
         access_token: String,
         id_token: String,
