@@ -70,7 +70,7 @@ router.get('/login', function (req, res) {
     console.log('KunalsRupani *********** oauth2Client:', oauth2Client);
 }
  var mauth2Client = new Oauth2Client ({
-    oauth2_client: oauth2Client.toISOString
+    oauth2_client: oauth2Client
   }
   );
 
@@ -156,7 +156,7 @@ router.get('/listevents', function (req, res) {
 
    Oauth2Client.find({}, (err, oauth2clients)=>{
 
-    oauth2Client1 = JSON.parse(oauth2clients[0]); 
+    oauth2Client1 = oauth2clients[0].oauth2_client; 
    
      console.log('oauth2clients object FROM DB ********************************',oauth2Client1 );
    }
@@ -169,7 +169,7 @@ router.get('/listevents', function (req, res) {
    console.log('oauth2clients object FROM memory ********************************',oauth2Client );
 
    calendar.events.list({
-    auth: oauth2Client1.oauth2_client,
+    auth: oauth2Client1,
     timeMin: (new Date()).toISOString(),
     maxResults: 3,
     singleEvents: true,
