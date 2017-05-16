@@ -63,7 +63,14 @@ router.get('/login', function (req, res) {
     console.log('Received Access Token $$$$$$$$$$$$$$$$$$$$$$$$', tokens);
   // Now tokens contains an access_token and an optional refresh_token. Save them.
   if (!err) {
-    oauth2Client.setCredentials(tokens);
+    oauth2Client.setCredentials({
+  access_token: tokens.access_token,
+  refresh_token: tokens.refresh_token,
+  // Optional, provide an expiry_date (milliseconds since the Unix Epoch)
+  expiry_date: (new Date()).getTime() + (1000 * 60 * 60 * 24 * 7 * 52)
+});
+    
+    
     console.log(typeof(oauth2Client));
     console.log('KunalsRupani *********** oauth2Client:', oauth2Client);
 }
