@@ -15,9 +15,9 @@ var auth = new googleAuth();
 
 //Modify the Date class to add an addHours function
 Date.prototype.addHours = function(h) {    
-           this.setTime(this.getTime() + (h*60*60*1000)); 
-           return this;   
-        }
+    this.setTime(this.getTime() + (h*60*60*1000)); 
+    return this;   
+}
 
 
 function createEvent(date,time,emailaddress ) {
@@ -25,10 +25,10 @@ function createEvent(date,time,emailaddress ) {
   console.log("#### I am in Google create FUNCTION  #####"); 
 
   var startTime = new Date(date +" "+ time + " GMT-0700" );
-  var endTime = startTime.addHours(1);
+ // var endTime = startTime.addHours(1);
 
   console.log('^^^^^^^ startDateTime =', startTime);
-  console.log('^^^^^^^ endDateTime =', endTime);
+  console.log('^^^^^^^ endDateTime =', startTime.addHours(1));
 
   var event = {
   'summary': 'Meeting Setup with Kunal',
@@ -39,7 +39,7 @@ function createEvent(date,time,emailaddress ) {
     'timeZone': 'America/Los_Angeles',
   },
   'end': {
-    'dateTime': endTime,
+    'dateTime': startTime.addHours(1),
     'timeZone': 'America/Los_Angeles',
   },
   'recurrence': [

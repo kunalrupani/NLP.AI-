@@ -1,7 +1,7 @@
 
 
-date="01/01/1970";
-workFrom="11:40";
+date="2017-05-24";
+workFrom="11:40:00";
 
 
 
@@ -11,7 +11,14 @@ Date.prototype.addHours = function(h) {
         }
 
 
-d = new Date(date +" "+workFrom);
+startTime1 = new Date(date +" "+workFrom + " GMT-0700");
+console.log('DateTime startTime: ' + startTime1);
 
-console.log('DateTime: ' + d);
-console.log('DateTime: ' + d.addHours(1));
+//endTime1=startTime1.addHours(1);
+
+endTime1 = new Date(date +" "+workFrom + " GMT-0700" );
+
+console.log('DateTime endTime: ' + endTime1.addHours(1));
+
+
+
