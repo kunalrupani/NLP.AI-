@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const config = require('./../config');
-const createEvent = require('./googlecalendar');
+const {createEvent} = require('./googlecalendar');
 
 const sessionIds = new Map();
 
