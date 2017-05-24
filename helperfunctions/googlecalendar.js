@@ -35,9 +35,9 @@ function createEvent(date,time,emailaddress ) {
   console.log('^^^^^^^ endDateTime =', enTime.addHours(1));
 
   var event = {
-  'summary': 'Meeting Setup with Kunal',
-  'location': 'San Jose',
-  'description': 'askRupaniBot Meeting',
+  'summary': 'Meeting with Kunal',
+  'location': 'Silicon Valley',
+  'description': 'This meeting is setup per request from ' + emailaddress,
   'start': {
     'dateTime': stTime,
     'timeZone': 'America/Los_Angeles',
@@ -46,9 +46,9 @@ function createEvent(date,time,emailaddress ) {
     'dateTime': enTime,
     'timeZone': 'America/Los_Angeles',
   },
-  'recurrence': [
-    'RRULE:FREQ=DAILY;COUNT=1'
-  ],
+//   'recurrence': [
+//     'RRULE:FREQ=DAILY;COUNT=1'
+//   ],
   'attendees': [
     {'email': emailaddress},
   ],
