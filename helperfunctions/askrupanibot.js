@@ -83,11 +83,11 @@ function handleApiAiResponse(sender, response) {
 		console.log("------ Received message from API.AI with a Quick Reply----");
 		 for (let i=0; i<messages.length; i++)
 		 {
-		//	if (messages[i].type == "facebook"){
-			console.log("------ I received a facebook quick reply----");
-			timeout = i * timeoutInterval;
-			setTimeout(handleMessage.bind(null, messages[i], sender), timeout); 
-		//	}
+			if (messages[i].platform == "facebook"){
+			 console.log("------ I received a facebook quick reply----");
+			 timeout = i * timeoutInterval;
+			 setTimeout(handleMessage.bind(null, messages[i], sender), timeout); 
+			}
 		 }
 		
 	}
