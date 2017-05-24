@@ -29,10 +29,10 @@ function createEvent(date,time,emailaddress ) {
 
 
   let stTime = new Date(date +" "+ time + " GMT-0700" );
- // var endTime = startTime.addHours(1);
+  let enTime = new Date(date +" "+ time + " GMT-0700" );
 
   console.log('^^^^^^^ startDateTime =', stTime);
-  console.log('^^^^^^^ endDateTime =', stTime.addHours(1));
+  console.log('^^^^^^^ endDateTime =', enTime.addHours(1));
 
   var event = {
   'summary': 'Meeting Setup with Kunal',
@@ -43,7 +43,7 @@ function createEvent(date,time,emailaddress ) {
     'timeZone': 'America/Los_Angeles',
   },
   'end': {
-    'dateTime': stTime.addHours(1),
+    'dateTime': enTime,
     'timeZone': 'America/Los_Angeles',
   },
   'recurrence': [

@@ -89,68 +89,68 @@ router.get('/login', function (req, res) {
 
 // Create Events
 
-router.get('/createevent', function (req, res) {
+// router.get('/createevent', function (req, res) {
 
-console.log("#### I am in Google create event  #####"); 
+// console.log("#### I am in Google create event  #####"); 
 
-var startTime = new Date('2017-05-13 16:00:00 GMT-0700');
+// var startTime = new Date('2017-05-13 16:00:00 GMT-0700');
 
-var endTime = new Date('2017-05-13 17:00:00 GMT-0700');
+// var endTime = new Date('2017-05-13 17:00:00 GMT-0700');
 
-console.log('^^^^^^^ startDateTime =', startTime);
-console.log('^^^^^^^ endDateTime =', endTime);
+// console.log('^^^^^^^ startDateTime =', startTime);
+// console.log('^^^^^^^ endDateTime =', endTime);
 
-var event = {
-  'summary': 'Meeting Setup with Kunal',
-  'location': 'San Jose',
-  'description': 'askRupaniBot experimentation',
-  'start': {
-    'dateTime': startTime,
-    'timeZone': 'America/Los_Angeles',
-  },
-  'end': {
-    'dateTime': endTime,
-    'timeZone': 'America/Los_Angeles',
-  },
-  'recurrence': [
-    'RRULE:FREQ=DAILY;COUNT=1'
-  ],
-  'attendees': [
-    {'email': 'rupanikunal@hotmail.com'},
-  ],
-  'reminders': {
-    'useDefault': false,
-    'overrides': [
-      {'method': 'email', 'minutes': 24 * 60},
-      {'method': 'popup', 'minutes': 10},
-    ],
-  },
-};
+// var event = {
+//   'summary': 'Meeting Setup with Kunal',
+//   'location': 'San Jose',
+//   'description': 'askRupaniBot experimentation',
+//   'start': {
+//     'dateTime': startTime,
+//     'timeZone': 'America/Los_Angeles',
+//   },
+//   'end': {
+//     'dateTime': endTime,
+//     'timeZone': 'America/Los_Angeles',
+//   },
+//   'recurrence': [
+//     'RRULE:FREQ=DAILY;COUNT=1'
+//   ],
+//   'attendees': [
+//     {'email': 'rupanikunal@hotmail.com'},
+//   ],
+//   'reminders': {
+//     'useDefault': false,
+//     'overrides': [
+//       {'method': 'email', 'minutes': 24 * 60},
+//       {'method': 'popup', 'minutes': 10},
+//     ],
+//   },
+// };
 
-  var oauth2Client1=new auth.OAuth2(
-  '739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com',
-  'M9cXrkBGQ-JujTgyG2qOAAAe',
-  'https://pointylabs.herokuapp.com/google/login'
-);
+//   var oauth2Client1=new auth.OAuth2(
+//   '739725624072-s0pl5n494ek7pmm1bdeh84ubcjl7sc2b.apps.googleusercontent.com',
+//   'M9cXrkBGQ-JujTgyG2qOAAAe',
+//   'https://pointylabs.herokuapp.com/google/login'
+// );
 
-  Oauth2Client.find({}, (err, oauth2clients)=>{
-    oauth2Client1.setCredentials(oauth2clients[0].credentials);    
-    calendar.events.insert({
-    auth: oauth2Client1,
-    calendarId: 'primary',
-    sendNotifications: true,
-    resource: event,
-    }, function(err, event) {
-    if (err) {
-     console.log('There was an error contacting the Calendar service: ' + err);
-     return;
-    }
-    console.log('Event created: %s', event.htmlLink);
-   });
-  }
-);
-}
-);
+//   Oauth2Client.find({}, (err, oauth2clients)=>{
+//     oauth2Client1.setCredentials(oauth2clients[0].credentials);    
+//     calendar.events.insert({
+//     auth: oauth2Client1,
+//     calendarId: 'primary',
+//     sendNotifications: true,
+//     resource: event,
+//     }, function(err, event) {
+//     if (err) {
+//      console.log('There was an error contacting the Calendar service: ' + err);
+//      return;
+//     }
+//     console.log('Event created: %s', event.htmlLink);
+//    });
+//   }
+// );
+// }
+// );
 
 // List 3 upcoming events
 
