@@ -69,6 +69,7 @@ function handleApiAiResponse(sender, response) {
 	console.log(JSON.stringify(response));
 
 	let responseText = response.result.fulfillment.speech;
+	let messages = response.result.fulfillment.messages;
 
 	sendTypingOff(sender);
 
@@ -76,7 +77,22 @@ function handleApiAiResponse(sender, response) {
 		//api ai could not evaluate input.
 		console.log('Unknown query' + response.result.resolvedQuery);
 		sendTextMessage(sender, "Dude, I have no clue what you are saying. Try again...");
-	}  else {
+	}  else if(messages.length >1) {
+		let timeoutInterval = 1100;
+        let timeout = 0;
+
+		 for (let i=0; i<messages.length; i++)
+		 {
+			if (messages[i].type == "facebook"){
+			console.log("------ I received a facebook quick reply----");
+			timeout = i * timeoutInterval;
+			setTimeout(handleMessage.bind(null, messages[i], sender), timeout); 
+			}
+		 }
+		
+	}
+	
+	else {
 		sendTextMessage(sender, responseText);
 	}
 }
@@ -157,6 +173,44 @@ function callSendAPI(messageData) {
 		}
 	});
 }
+
+function handleMessage(message, sender) {
+	switch (message.type) {
+		case 0: //text
+			sendTextMessage(sender, message.speech);
+			break;
+		case 2: //quick replies
+			let replies = [];
+			for (var b = 0; b < message.replies.length; b++) {
+				let reply =
+				{
+					"content_type": "text",
+					"title": message.replies[b],
+					"payload": message.replies[b]
+				}
+				replies.push(reply);
+			}
+			sendQuickReply(sender, message.title, replies);
+			break;
+		case 3: //image
+			sendImageMessage(sender, message.imageUrl);
+			break;
+		case 4:
+			// custom payload
+			var messageData = {
+				recipient: {
+					id: sender
+				},
+				message: message.payload.facebook
+
+			};
+			console.log('custom payload');
+			callSendAPI(messageData);
+
+			break;
+	}
+}
+
 
 //Send indicator to FB Messager about the users typing action
 function sendTypingOn(recipientId) {
