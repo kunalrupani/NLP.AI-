@@ -70,7 +70,10 @@ function handleApiAiResponse(sender, response) {
 
 	let responseText = response.result.fulfillment.speech;
 	let messages = response.result.fulfillment.messages;
-
+    let action = response.result.action;
+	let contexts = response.result.contexts;
+	let parameters = response.result.parameters;
+	
 	sendTypingOff(sender);
 
 	if (responseText == '' ) {
