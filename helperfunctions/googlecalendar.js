@@ -43,7 +43,7 @@ function createEvent(date,time,emailaddress ) {
     'timeZone': 'America/Los_Angeles',
   },
   'end': {
-    'dateTime': st.addHours(1),
+    'dateTime': stTime.addHours(1),
     'timeZone': 'America/Los_Angeles',
   },
   'recurrence': [
