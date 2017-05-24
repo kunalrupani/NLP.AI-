@@ -77,7 +77,15 @@ function handleApiAiResponse(sender, response) {
 		//api ai could not evaluate input.
 		console.log('Unknown query' + response.result.resolvedQuery);
 		sendTextMessage(sender, "Dude, I have no clue what you are saying. Try again...");
-	}  else if(messages.length >1) {
+	} 
+	// When the Action parameter is Defined for asking user info and meeting time/date
+
+	else if (isDefined(action)) {
+		handleApiAiAction(sender, action, responseText, contexts, parameters);
+	} 
+	
+	//This is for Quick Reply buttons on facebook messenger
+	 else if(messages.length >1) {
 		let timeoutInterval = 1100;
         let timeout = 0;
 		console.log("------ Received message from API.AI with a Quick Reply----");
@@ -89,9 +97,7 @@ function handleApiAiResponse(sender, response) {
 			 setTimeout(handleMessage.bind(null, messages[i], sender), timeout); 
 			}
 		 }
-		
 	}
-	
 	else {
 		sendTextMessage(sender, responseText);
 	}
@@ -173,6 +179,72 @@ function callSendAPI(messageData) {
 		}
 	});
 }
+
+function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+
+	switch (action) {
+		case "Prompt-for-User-Info":
+			if (parameters.hasOwnProperty("appointment-date") && parameters["appointment-time"] && parameters["user-email-add"]!='') {
+
+				console.log('Appointment Date: '+ parameters["appointment-date"] );
+				console.log('Appointment Time: '+ parameters["appointment-time"] );
+				console.log('User Email Address: ' + parameters["user-email-add"] );
+
+
+			} else {
+				sendTextMessage(sender, responseText);
+			}
+			break;
+		
+		
+		default:
+			//unhandled action, just send back the text
+			//console.log("send responce in handle actiongit: " + responseText);
+			sendTextMessage(sender, responseText);
+	}
+}
+
+
+function handleMessage(message, sender) {
+	switch (message.type) {
+		case 0: //text
+			sendTextMessage(sender, message.speech);
+			break;
+		case 2: //quick replies
+			let replies = [];
+			for (var b = 0; b < message.replies.length; b++) {
+				let reply =
+				{
+					"content_type": "text",
+					"title": message.replies[b],
+					"payload": message.replies[b]
+				}
+				replies.push(reply);
+			}
+			sendQuickReply(sender, message.title, replies);
+			break;
+		case 3: //image
+			sendImageMessage(sender, message.imageUrl);
+			break;
+		case 4:
+			// custom payload
+			var messageData = {
+				recipient: {
+					id: sender
+				},
+				message: message.payload.facebook
+
+			};
+			console.log('custom payload');
+			callSendAPI(messageData);
+
+			break;
+	}
+}
+
+
+
+
 
 function handleMessage(message, sender) {
 	switch (message.type) {
