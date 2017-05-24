@@ -80,7 +80,7 @@ function handleApiAiResponse(sender, response) {
 	}  else if(messages.length >1) {
 		let timeoutInterval = 1100;
         let timeout = 0;
-
+		console.log("------ Received message from API.AI with a Quick Reply----");
 		 for (let i=0; i<messages.length; i++)
 		 {
 			if (messages[i].type == "facebook"){
