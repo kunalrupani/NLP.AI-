@@ -24,7 +24,7 @@ function createEvent(date,time,emailaddress ) {
 
   console.log("#### I am in Google create FUNCTION  #####"); 
 
-  var startTime = new Date(date +" "+ time);
+  var startTime = new Date(date +" "+ time + "GMT-0700" );
   var endTime = startTime.addHours(1);
 
   var event = {
