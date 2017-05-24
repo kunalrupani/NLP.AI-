@@ -27,6 +27,9 @@ function createEvent(date,time,emailaddress ) {
   var startTime = new Date(date +" "+ time + " GMT-0800" );
   var endTime = startTime.addHours(1);
 
+  console.log('^^^^^^^ startDateTime =', startTime);
+  console.log('^^^^^^^ endDateTime =', endTime);
+
   var event = {
   'summary': 'Meeting Setup with Kunal',
   'location': 'San Jose',
