@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const config = require('./../config');
+const createEvent = require('./googlecalendar');
 
 const sessionIds = new Map();
 
@@ -193,6 +194,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				console.log('Appointment Date: '+ parameters["appointment-date"] );
 				console.log('Appointment Time: '+ parameters["appointment-time"] );
 				console.log('User Email Address: ' + parameters["user-email-add"] );
+				createEvent(parameters["appointment-date"],parameters["appointment-time"], parameters["user-email-add"] );
 				sendTextMessage(sender, responseText);
 
 			} else {
