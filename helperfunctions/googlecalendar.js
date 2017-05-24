@@ -23,23 +23,27 @@ Date.prototype.addHours = function(h) {
 function createEvent(date,time,emailaddress ) {
 
   console.log("#### I am in Google create FUNCTION  #####"); 
+  console.log("Date", date);
+  console.log("Time", time);
+  console.log("emailaddress", emailaddress);
 
-  var startTime = new Date(date +" "+ time + " GMT-0700" );
+
+  let stTime = new Date(date +" "+ time + " GMT-0700" );
  // var endTime = startTime.addHours(1);
 
-  console.log('^^^^^^^ startDateTime =', startTime);
-  console.log('^^^^^^^ endDateTime =', startTime.addHours(1));
+  console.log('^^^^^^^ startDateTime =', stTime);
+  console.log('^^^^^^^ endDateTime =', stTime.addHours(1));
 
   var event = {
   'summary': 'Meeting Setup with Kunal',
   'location': 'San Jose',
   'description': 'askRupaniBot Meeting',
   'start': {
-    'dateTime': startTime,
+    'dateTime': stTime,
     'timeZone': 'America/Los_Angeles',
   },
   'end': {
-    'dateTime': startTime.addHours(1),
+    'dateTime': st.addHours(1),
     'timeZone': 'America/Los_Angeles',
   },
   'recurrence': [
