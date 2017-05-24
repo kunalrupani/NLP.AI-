@@ -211,6 +211,24 @@ function handleMessage(message, sender) {
 	}
 }
 
+/*
+ * Send a message with Quick Reply buttons.
+ *
+ */
+function sendQuickReply(recipientId, text, replies, metadata) {
+	var messageData = {
+		recipient: {
+			id: recipientId
+		},
+		message: {
+			text: text,
+			metadata: isDefined(metadata)?metadata:'',
+			quick_replies: replies
+		}
+	};
+
+	callSendAPI(messageData);
+}
 
 //Send indicator to FB Messager about the users typing action
 function sendTypingOn(recipientId) {
