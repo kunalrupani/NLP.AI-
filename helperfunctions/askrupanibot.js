@@ -73,7 +73,7 @@ function handleApiAiResponse(sender, response) {
     let action = response.result.action;
 	let contexts = response.result.contexts;
 	let parameters = response.result.parameters;
-	
+
 	sendTypingOff(sender);
 
 	if (responseText == '' ) {
@@ -81,6 +81,7 @@ function handleApiAiResponse(sender, response) {
 		console.log('Unknown query' + response.result.resolvedQuery);
 		sendTextMessage(sender, "Dude, I have no clue what you are saying. Try again...");
 	} 
+
 	// When the Action parameter is Defined for asking user info and meeting time/date
 
 	else if (isDefined(action)) {
@@ -192,7 +193,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				console.log('Appointment Date: '+ parameters["appointment-date"] );
 				console.log('Appointment Time: '+ parameters["appointment-time"] );
 				console.log('User Email Address: ' + parameters["user-email-add"] );
-
+				sendTextMessage(sender, responseText);
 
 			} else {
 				sendTextMessage(sender, responseText);
