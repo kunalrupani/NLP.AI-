@@ -99,8 +99,6 @@ app.use('/google', googleroutes);
 
 //--------------- END O365 Section ---------------//
 
-
-
 //--------------- Start O365 Section ---------------//
 
 
@@ -109,11 +107,6 @@ app.use('/o365', o365routes);
 
 
 //--------------- END O365 Section ---------------//
-
-
-
-
-
 
 // Express listen
 
